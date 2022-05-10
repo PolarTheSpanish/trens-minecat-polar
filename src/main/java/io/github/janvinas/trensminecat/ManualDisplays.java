@@ -10,11 +10,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.awt.*;
 import java.awt.font.TextAttribute;
 import java.awt.image.BufferedImage;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 
 public class ManualDisplays {
@@ -22,7 +23,7 @@ public class ManualDisplays {
     static String imgDir = "img/";
 
     public static class ManualDisplay1 extends ManualDisplay {
-        String type = "/";
+        String type = "_orange/";
         boolean updateTime = true;
         String brand;
 
@@ -252,7 +253,10 @@ public class ManualDisplays {
     */
 
     public static class ManualDisplay3 extends ManualDisplay{ //pantalla fgc primer tren (2*1)
-
+        String liniatren = "";
+        String plataforma = "0";
+        Boolean senseParada = false;
+        Boolean hasFGCTrain = false;
         static Font minecraftiaWide = TrensMinecat.minecraftiaJavaFont;
         static MapFont<Character> minecraftia;
 
@@ -267,7 +271,7 @@ public class ManualDisplays {
             super.onAttached();
             setUpdateWithoutViewers(false);
             getLayer(0).clear();
-            getLayer(0).draw(Assets.getMapTexture(imgDir + "ManualDisplay3.png"), 0, 0);
+            getLayer(0).draw(Assets.getMapTexture(imgDir + "ManualDisplay3A.png"), 0, 0);
         }
 
         @Override
@@ -280,10 +284,79 @@ public class ManualDisplays {
             //layer3: text and icons (updated every updateTime seconds)
             //layer4: time (updated every tick)
 
-            getLayer(4).clear();
+            LocalTime tempsActual = LocalTime.parse(LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm")));
+            Boolean fiDeServei = (tempsActual.isAfter(LocalTime.parse("01:29")) && tempsActual.isBefore(LocalTime.parse("04:58")));
+
+            if (!fiDeServei) {
+                if (hasFGCTrain) {
+                    getLayer(0).clear();
+                    getLayer(0).draw(Assets.getMapTexture(imgDir + "ManualDisplay3B.png"), 0, 0);
+                    if (Objects.equals(liniatren, "R5")) {
+                        getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Pl. Esp.");
+                        getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "Euro.|Fira");
+                        getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "Gornal");
+                        getLayer(2).draw(minecraftia, 62, 63, MapColorPalette.getColor(0, 0, 0), "Cornellà-R.");
+                        getLayer(2).draw(minecraftia, 62, 82, MapColorPalette.getColor(0, 0, 0), "St. Boi");
+                        getLayer(2).draw(minecraftia, 62, 99, MapColorPalette.getColor(0, 0, 0), "Molí Nou");
+                        getLayer(2).draw(minecraftia, 127, 63, MapColorPalette.getColor(0, 0, 0), "Martorell");
+                        getLayer(2).draw(minecraftia, 127, 82, MapColorPalette.getColor(0, 0, 0), "Olesa de M.");
+                        getLayer(2).draw(minecraftia, 127, 99, MapColorPalette.getColor(0, 0, 0), "Monistrol M.");
+                        getLayer(2).draw(minecraftia, 192, 63, MapColorPalette.getColor(0, 0, 0), "C. i el Vilar");
+                        getLayer(2).draw(minecraftia, 192, 82, MapColorPalette.getColor(0, 0, 0), "M.-Viladordis");
+                        getLayer(2).draw(minecraftia, 192, 99, MapColorPalette.getColor(0, 0, 0), "M.-Baixador");
+                    } else if (Objects.equals(liniatren, "R50")) {
+                        getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Pl. Esp.");
+                        getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "Euro.|Fira");
+                        getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "Gornal");
+                        getLayer(2).draw(minecraftia, 62, 63, MapColorPalette.getColor(0, 0, 0), "Cornellà-R.");
+                        getLayer(2).draw(minecraftia, 62, 82, MapColorPalette.getColor(0, 0, 0), "St. Boi");
+                        getLayer(2).draw(minecraftia, 62, 99, MapColorPalette.getColor(0, 0, 0), "Martorell");
+                        getLayer(2).draw(minecraftia, 127, 63, MapColorPalette.getColor(0, 0, 0), "Olesa de M.");
+                        getLayer(2).draw(minecraftia, 127, 82, MapColorPalette.getColor(0, 0, 0), "Monistrol M.");
+                        getLayer(2).draw(minecraftia, 127, 99, MapColorPalette.getColor(0, 0, 0), "M.-Viladordis");
+                        getLayer(2).draw(minecraftia, 192, 63, MapColorPalette.getColor(0, 0, 0), "M.-Baixador");
+                    } else if (Objects.equals(liniatren, "R6")) {
+                        getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Pl. Esp.");
+                        getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "Euro.|Fira");
+                        getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "Gornal");
+                        getLayer(2).draw(minecraftia, 62, 63, MapColorPalette.getColor(0, 0, 0), "Cornellà-R.");
+                        getLayer(2).draw(minecraftia, 62, 82, MapColorPalette.getColor(0, 0, 0), "St. Boi");
+                        getLayer(2).draw(minecraftia, 62, 99, MapColorPalette.getColor(0, 0, 0), "Molí Nou");
+                        getLayer(2).draw(minecraftia, 127, 63, MapColorPalette.getColor(0, 0, 0), "Martorell");
+                        getLayer(2).draw(minecraftia, 127, 82, MapColorPalette.getColor(0, 0, 0), "St. Esteve S.");
+                        getLayer(2).draw(minecraftia, 127, 99, MapColorPalette.getColor(0, 0, 0), "V. del Camí");
+                        getLayer(2).draw(minecraftia, 192, 63, MapColorPalette.getColor(0, 0, 0), "Igualada");
+                        getLayer(2).draw(minecraftia, 192, 82, MapColorPalette.getColor(0, 0, 0), "");
+                        getLayer(2).draw(minecraftia, 192, 99, MapColorPalette.getColor(0, 0, 0), "");
+                    } else if (Objects.equals(liniatren, "R60")) {
+                        getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Pl. Esp.");
+                        getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "Euro.|Fira");
+                        getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "Gornal");
+                        getLayer(2).draw(minecraftia, 62, 63, MapColorPalette.getColor(0, 0, 0), "Cornellà-R.");
+                        getLayer(2).draw(minecraftia, 62, 82, MapColorPalette.getColor(0, 0, 0), "St. Boi");
+                        getLayer(2).draw(minecraftia, 62, 99, MapColorPalette.getColor(0, 0, 0), "Martorell");
+                        getLayer(2).draw(minecraftia, 127, 63, MapColorPalette.getColor(0, 0, 0), "Igualada");
+                    }
+                } else if (senseParada) {
+                    getLayer(0).clear();
+                    getLayer(0).draw(Assets.getMapTexture(imgDir + "ManualDisplay3C.png"), 0, 0);
+                } else {
+                    getLayer(0).clear();
+                    getLayer(0).draw(Assets.getMapTexture(imgDir + "ManualDisplay3A.png"), 0, 0);
+                }
+            } else {
+                getLayer(5).clear();
+                getLayer(3).clear();
+                getLayer(2).clear();
+                getLayer(1).clear();
+                getLayer(0).clear();
+                getLayer(0).draw(Assets.getMapTexture(imgDir + "ManualDisplay3E.png"), 0, 0);
+            }
+
             LocalDateTime now = LocalDateTime.now();
+            getLayer(4).clear();
             getLayer(4).setAlignment(MapFont.Alignment.MIDDLE);
-            getLayer(4).draw(minecraftia, 38, 10, MapColorPalette.COLOR_WHITE,
+            getLayer(4).draw(minecraftia, 28, 10, MapColorPalette.COLOR_WHITE,
                     now.format(DateTimeFormatter.ofPattern("HH:mm")));
         }
 
@@ -291,36 +364,65 @@ public class ManualDisplays {
             if (via != null) {
                 displayID = displayID + via;
             }
+
+            if (via == null){
+                plataforma = displayID.replaceAll("[^\\d.]", "");
+            } else {
+                plataforma = via;
+            }
+
             String codiParada = displayID.replaceAll("[0-9]","");
             if(! properties.get("ID", String.class).equals(displayID)) return false;
+
+            if (dadesTren.getProperties().matchTag("L8") && dadesTren.getProperties().matchTag("FGC")){
+                liniatren = "L8";
+            } else if (dadesTren.getProperties().matchTag("S3") && dadesTren.getProperties().matchTag("FGC")){
+                liniatren = "S3";
+            } else if (dadesTren.getProperties().matchTag("S8") && dadesTren.getProperties().matchTag("FGC")){
+                liniatren = "S8";
+            } else if (dadesTren.getProperties().matchTag("R5") && dadesTren.getProperties().matchTag("FGC")){
+                liniatren = "R5";
+            } else if (dadesTren.getProperties().matchTag("R50") && dadesTren.getProperties().matchTag("FGC")){
+                liniatren = "R50";
+            } else if (dadesTren.getProperties().matchTag("R6") && dadesTren.getProperties().matchTag("FGC")){
+                liniatren = "R6";
+            } else if (dadesTren.getProperties().matchTag("R60") && dadesTren.getProperties().matchTag("FGC")){
+                liniatren = "R60";
+            }
 
             getLayer(2).clear();
             getLayer(3).clear();
 
-            getLayer(2).draw(minecraftia, 58, 11, MapColorPalette.getColor(0x2B, 0x3D, 0x3F), "Primer Tren");
-            getLayer(2).fillRectangle(22, 30, 212, 16, MapColorPalette.getColor(200, 200, 200));
+            String trainLine = null;
+            String dest = null;
 
-            getLayer(2).draw(minecraftia, 24, 34, MapColorPalette.getColor(0x2B, 0x3D, 0x3F), "Destinació");
-            getLayer(2).draw(minecraftia, 162, 34, MapColorPalette.getColor(0x2B, 0x3D, 0x3F), "Observacions");
-
-            String trainLine;
-            String dest;
-            if(!dadesTren.getProperties().matchTag(codiParada)){
-                trainLine = "info";
-                dest = "Sense parada / Sin parada";
-            }else{
+            if(!dadesTren.getProperties().matchTag(codiParada)) {
+                senseParada = true;
+            } else {
                 trainLine = BoardUtils.getTrainLine(dadesTren.getProperties().getTrainName());
                 dest = dadesTren.getProperties().getDestination();
             }
 
-            MapTexture lineIcon = Assets.getMapTexture(imgDir + "11px/" + trainLine + ".png");
-            if(!(lineIcon.getHeight() > 1)){
-                dest = dadesTren.getProperties().getDestination();
-                lineIcon = Assets.getMapTexture(imgDir + "11px/what.png");
-            }
+            if (!senseParada) {
+                hasFGCTrain = true;
 
-            getLayer(3).draw(minecraftia, 51, 49, MapColorPalette.COLOR_BLACK, dest);
-            getLayer(3).draw(lineIcon, 22, 49);
+                MapTexture lineIcon = Assets.getMapTexture(imgDir + "11px/" + trainLine + ".png");
+                if (!(lineIcon.getHeight() > 1)) {
+                    dest = dadesTren.getProperties().getDestination();
+                    lineIcon = Assets.getMapTexture(imgDir + "11px/what.png");
+                }
+
+                //DISPLAY
+                getLayer(3).draw(lineIcon, 22, 45);
+                getLayer(3).draw(minecraftia, 51, 45, MapColorPalette.COLOR_BLACK, dest);
+                getLayer(3).draw(minecraftia, 124, 45, MapColorPalette.COLOR_BLACK, plataforma);
+                getLayer(3).draw(minecraftia, 138, 45, MapColorPalette.COLOR_BLACK, LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm")));
+
+                if (Objects.equals(liniatren, "R50") || Objects.equals(liniatren, "R60")) {
+                    getLayer(3).draw(minecraftia, 180, 45, MapColorPalette.COLOR_BLACK, "Semidirecte");
+                }
+                //////////////////////////////////////////////////////////
+            }
 
             if(clearIn != 0){
                 getPlugin().getServer().getScheduler().scheduleSyncDelayedTask(getPlugin(), () -> this.clearInformation(properties.get("ID", String.class)), clearIn * 20L);
@@ -331,6 +433,14 @@ public class ManualDisplays {
 
         public boolean clearInformation(String displayID){
             if(! properties.get("ID", String.class).equals(displayID)) return false;
+            liniatren = "";
+            senseParada = false;
+            hasFGCTrain = false;
+
+            //wip
+            getLayer(0).clear();
+            getLayer(0).draw(Assets.getMapTexture(imgDir + "ManualDisplay3A.png"), 0, 0);
+
             getLayer(2).clear();
             getLayer(3).clear();
             return true;
@@ -542,6 +652,7 @@ public class ManualDisplays {
     public static class ManualDisplay5 extends ManualDisplay{
 
         static MapTexture background = MapTexture.loadPluginResource(JavaPlugin.getPlugin(TrensMinecat.class), "img/ManualDisplay5.png");
+        Boolean senseParada = false;
 
         @Override
         public boolean updateInformation(String displayID, String via, MinecartGroup dadesTren, Integer clearIn) {
@@ -549,14 +660,24 @@ public class ManualDisplays {
             getLayer(1).clear();
             BufferedImage layer1 = new BufferedImage(256, 128, BufferedImage.TYPE_INT_ARGB);
             Graphics2D g = layer1.createGraphics();
-            g.setColor(new Color(58, 93, 57));
+            g.setColor(new Color(73, 161, 71));
             g.setFont(TrensMinecat.minecraftiaJavaFont);
-            g.drawString(dadesTren.getProperties().getDestination(), 22, 67); //Destino
-            if (via != null) {
-                g.drawString(via, 120, 67); //Vía
+
+            if(!dadesTren.getProperties().matchTag(displayID)){
+                senseParada = true;
             }
-            g.drawString(LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm")), 210, 67); //Hora
-            g.drawString("SERVICIO: " + dadesTren.getProperties().getDisplayName(), 22, 90); //Servicio (va debajo de "Destino")
+
+            if (!senseParada) {
+                g.drawString(dadesTren.getProperties().getDestination(), 22, 67); //Destino
+                if (via != null) {
+                    g.drawString(via, 120, 67); //Vía
+                }
+                g.drawString(LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm")), 210, 67); //Hora
+                g.drawString("SERVICIO: " + dadesTren.getProperties().getDisplayName(), 22, 90); //Servicio (va debajo de "Destino")
+            } else {
+                g.drawString("VA A PROCEDER A SU PASO UN TREN SIN PARADA", 22, 67);
+                g.drawString("¡¡NO SE ACERQUE AL BORDE DEL ANDÉN!!", 22, 90);
+            }
             g.dispose();
             getLayer(1).draw(MapTexture.fromImage(layer1),0 , 0);
 
@@ -570,7 +691,7 @@ public class ManualDisplays {
         @Override
         public boolean clearInformation(String displayID) {
             if(! properties.get("ID", String.class).equals(displayID)) return false;
-
+            senseParada = false;
             getLayer(1).clear();
             return true;
         }

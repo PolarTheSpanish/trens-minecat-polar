@@ -59,6 +59,7 @@ public class TrensMinecat extends JavaPlugin {
     HashMap<String, Block> trainList = new HashMap<>();
 
     public static Font minecraftiaJavaFont;
+    public static Font helvetica28JavaFont;
     public static Font helvetica46JavaFont;
 
     public TrainTracker trainTracker = new TrainTracker();
@@ -116,6 +117,7 @@ public class TrensMinecat extends JavaPlugin {
 
 
         minecraftiaJavaFont = new Font("minecraftia", Font.PLAIN, 8);
+        helvetica28JavaFont = new Font("helvetica", Font.PLAIN, 28);
         helvetica46JavaFont = new Font("helvetica", Font.PLAIN, 46);
 
         trainTracker.loadTrains();
