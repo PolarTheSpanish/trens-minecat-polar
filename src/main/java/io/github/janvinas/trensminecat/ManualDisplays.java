@@ -255,6 +255,8 @@ public class ManualDisplays {
     public static class ManualDisplay3 extends ManualDisplay{ //pantalla fgc primer tren (2*1)
         String liniatren = "";
         String plataforma = "0";
+        int tickCount = 0;
+        Boolean seguentPagina = false;
         Boolean senseParada = false;
         Boolean hasFGCTrain = false;
         static Font minecraftiaWide = TrensMinecat.minecraftiaJavaFont;
@@ -289,9 +291,224 @@ public class ManualDisplays {
 
             if (!fiDeServei) {
                 if (hasFGCTrain) {
+                    if (tickCount % 100 == 0){
+                        seguentPagina = !seguentPagina;
+                    }
+
                     getLayer(0).clear();
                     getLayer(0).draw(Assets.getMapTexture(imgDir + "ManualDisplay3B.png"), 0, 0);
-                    if (Objects.equals(liniatren, "R5")) {
+                    if (Objects.equals(liniatren, "RL1A")) {
+                        getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Lleida");
+                        getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "Alcoletge");
+                        getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "Térmens");
+                        getLayer(2).draw(minecraftia, 62, 63, MapColorPalette.getColor(0, 0, 0), "V. Balaguer");
+                        getLayer(2).draw(minecraftia, 62, 82, MapColorPalette.getColor(0, 0, 0), "Balaguer");
+                    }
+
+                    if (Objects.equals(liniatren, "RL1B")) {
+                        getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Balaguer");
+                        getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "V. Balaguer");
+                        getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "Térmens");
+                        getLayer(2).draw(minecraftia, 62, 63, MapColorPalette.getColor(0, 0, 0), "Alcoletge");
+                        getLayer(2).draw(minecraftia, 62, 82, MapColorPalette.getColor(0, 0, 0), "Lleida");
+                    }
+
+                    else if (Objects.equals(liniatren, "RL2A")) {
+                        if (!seguentPagina) {
+                            getLayer(2).clear();
+                            getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Lleida");
+                            getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "Alcoletge");
+                            getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "Térmens");
+                            getLayer(2).draw(minecraftia, 62, 63, MapColorPalette.getColor(0, 0, 0), "V. Balaguer");
+                            getLayer(2).draw(minecraftia, 62, 82, MapColorPalette.getColor(0, 0, 0), "Balaguer");
+                            getLayer(2).draw(minecraftia, 62, 99, MapColorPalette.getColor(0, 0, 0), "Gerb");
+                            getLayer(2).draw(minecraftia, 127, 63, MapColorPalette.getColor(0, 0, 0), "S.L. Montgai");
+                            getLayer(2).draw(minecraftia, 127, 82, MapColorPalette.getColor(0, 0, 0), "G. de Tremp");
+                            getLayer(2).draw(minecraftia, 127, 99, MapColorPalette.getColor(0, 0, 0), "P. de Noguera");
+                            getLayer(2).draw(minecraftia, 192, 63, MapColorPalette.getColor(0, 0, 0), "Tremp");
+                            getLayer(2).draw(minecraftia, 192, 82, MapColorPalette.getColor(0, 0, 0), "Talarn");
+                            getLayer(2).draw(minecraftia, 192, 99, MapColorPalette.getColor(0, 0, 0), "Salàs");
+                        } else {
+                            getLayer(2).clear();
+                            getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Pobla de S.");
+                        }
+                    }
+
+                    else if (Objects.equals(liniatren, "RL2B")) {
+                        if (!seguentPagina) {
+                            getLayer(2).clear();
+                            getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Pobla de S.");
+                            getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "Salàs");
+                            getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "Talarn");
+                            getLayer(2).draw(minecraftia, 62, 63, MapColorPalette.getColor(0, 0, 0), "Tremp");
+                            getLayer(2).draw(minecraftia, 62, 82, MapColorPalette.getColor(0, 0, 0), "P. de Noguera");
+                            getLayer(2).draw(minecraftia, 62, 99, MapColorPalette.getColor(0, 0, 0), "G. de Tremp");
+                            getLayer(2).draw(minecraftia, 127, 63, MapColorPalette.getColor(0, 0, 0), "S.L. Montgai");
+                            getLayer(2).draw(minecraftia, 127, 82, MapColorPalette.getColor(0, 0, 0), "Gerb");
+                            getLayer(2).draw(minecraftia, 127, 99, MapColorPalette.getColor(0, 0, 0), "Balaguer");
+                            getLayer(2).draw(minecraftia, 192, 63, MapColorPalette.getColor(0, 0, 0), "V. Balaguer");
+                            getLayer(2).draw(minecraftia, 192, 82, MapColorPalette.getColor(0, 0, 0), "Térmens");
+                            getLayer(2).draw(minecraftia, 192, 99, MapColorPalette.getColor(0, 0, 0), "Alcoletge");
+                        } else {
+                            getLayer(2).clear();
+                            getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Lleida");
+                        }
+                    }
+
+                    else if (Objects.equals(liniatren, "L6A")) {
+                        getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Pl. Cat.");
+                        getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "Provença");
+                        getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "Sarrià");
+                    }
+
+                    else if (Objects.equals(liniatren, "L6B")) {
+                        getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Sarrià");
+                        getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "Provença");
+                        getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "Pl. Cat.");
+                    }
+
+                    else if (Objects.equals(liniatren, "L7A")) {
+                        getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Pl. Cat.");
+                        getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "Provença");
+                        getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "Av. Tibid.");
+                    }
+
+                    else if (Objects.equals(liniatren, "L7B")) {
+                        getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Av. Tibid.");
+                        getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "Provença");
+                        getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "Pl. Cat.");
+                    }
+
+                    else if (Objects.equals(liniatren, "L8A")) {
+                        getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Pl. Esp.");
+                        getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "Euro.|Fira");
+                        getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "Gornal");
+                        getLayer(2).draw(minecraftia, 62, 63, MapColorPalette.getColor(0, 0, 0), "Cornellà-R.");
+                        getLayer(2).draw(minecraftia, 62, 82, MapColorPalette.getColor(0, 0, 0), "St. Boi");
+                        getLayer(2).draw(minecraftia, 62, 99, MapColorPalette.getColor(0, 0, 0), "Molí Nou");
+                    }
+
+                    else if (Objects.equals(liniatren, "L8B")) {
+                        getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Molí Nou");
+                        getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "St. Boi");
+                        getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "Cornellà-R.");
+                        getLayer(2).draw(minecraftia, 62, 63, MapColorPalette.getColor(0, 0, 0), "Gornal");
+                        getLayer(2).draw(minecraftia, 62, 82, MapColorPalette.getColor(0, 0, 0), "Euro.|Fira");
+                        getLayer(2).draw(minecraftia, 62, 99, MapColorPalette.getColor(0, 0, 0), "Pl. Esp.");
+                    }
+
+                    else if (Objects.equals(liniatren, "L12A")) {
+                        getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "R. Elis.");
+                        getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "Sarrià");
+                    }
+
+                    else if (Objects.equals(liniatren, "L12B")) {
+                        getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Sarrià");
+                        getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "R. Elis.");
+                    }
+
+                    else if (Objects.equals(liniatren, "S1A")) {
+                        getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Pl. Cat.");
+                        getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "Provença");
+                        getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "Sarrià");
+                        getLayer(2).draw(minecraftia, 62, 63, MapColorPalette.getColor(0, 0, 0), "P. Funicul.");
+                        getLayer(2).draw(minecraftia, 62, 82, MapColorPalette.getColor(0, 0, 0), "St. Cugat");
+                        getLayer(2).draw(minecraftia, 62, 99, MapColorPalette.getColor(0, 0, 0), "Rubí");
+                        getLayer(2).draw(minecraftia, 127, 63, MapColorPalette.getColor(0, 0, 0), "Les Fonts");
+                        getLayer(2).draw(minecraftia, 127, 82, MapColorPalette.getColor(0, 0, 0), "T. Rambla");
+                        getLayer(2).draw(minecraftia, 127, 99, MapColorPalette.getColor(0, 0, 0), "Vlp. Univ.");
+                        getLayer(2).draw(minecraftia, 192, 63, MapColorPalette.getColor(0, 0, 0), "T. Est. N.");
+                    }
+
+                    else if (Objects.equals(liniatren, "S1B")) {
+                        getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "T. Est. N.");
+                        getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "Vlp. Univ.");
+                        getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "T. Rambla");
+                        getLayer(2).draw(minecraftia, 62, 63, MapColorPalette.getColor(0, 0, 0), "Les Fonts");
+                        getLayer(2).draw(minecraftia, 62, 82, MapColorPalette.getColor(0, 0, 0), "Rubí");
+                        getLayer(2).draw(minecraftia, 62, 99, MapColorPalette.getColor(0, 0, 0), "St. Cugat");
+                        getLayer(2).draw(minecraftia, 127, 63, MapColorPalette.getColor(0, 0, 0), "P. Funicul.");
+                        getLayer(2).draw(minecraftia, 127, 82, MapColorPalette.getColor(0, 0, 0), "Sarrià");
+                        getLayer(2).draw(minecraftia, 127, 99, MapColorPalette.getColor(0, 0, 0), "Provença");
+                        getLayer(2).draw(minecraftia, 192, 63, MapColorPalette.getColor(0, 0, 0), "Pl. Cat.");
+                    }
+
+                    else if (Objects.equals(liniatren, "S2A")) {
+                        getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Pl. Cat.");
+                        getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "Provença");
+                        getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "Sarrià");
+                        getLayer(2).draw(minecraftia, 62, 63, MapColorPalette.getColor(0, 0, 0), "P. Funicul.");
+                        getLayer(2).draw(minecraftia, 62, 82, MapColorPalette.getColor(0, 0, 0), "St. Cugat");
+                        getLayer(2).draw(minecraftia, 62, 99, MapColorPalette.getColor(0, 0, 0), "Volpell.");
+                        getLayer(2).draw(minecraftia, 127, 63, MapColorPalette.getColor(0, 0, 0), "UAB");
+                        getLayer(2).draw(minecraftia, 127, 82, MapColorPalette.getColor(0, 0, 0), "Can Feu");
+                        getLayer(2).draw(minecraftia, 127, 99, MapColorPalette.getColor(0, 0, 0), "S. Pl. Major");
+                        getLayer(2).draw(minecraftia, 192, 63, MapColorPalette.getColor(0, 0, 0), "S. Nord");
+                    }
+
+                    else if (Objects.equals(liniatren, "S2B")) {
+                        getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "S. Nord");
+                        getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "S. Pl. Major.");
+                        getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "Can Feu");
+                        getLayer(2).draw(minecraftia, 62, 63, MapColorPalette.getColor(0, 0, 0), "UAB");
+                        getLayer(2).draw(minecraftia, 62, 82, MapColorPalette.getColor(0, 0, 0), "Volpell.");
+                        getLayer(2).draw(minecraftia, 62, 99, MapColorPalette.getColor(0, 0, 0), "St. Cugat");
+                        getLayer(2).draw(minecraftia, 127, 63, MapColorPalette.getColor(0, 0, 0), "P. Funicul.");
+                        getLayer(2).draw(minecraftia, 127, 82, MapColorPalette.getColor(0, 0, 0), "Sarrià");
+                        getLayer(2).draw(minecraftia, 127, 99, MapColorPalette.getColor(0, 0, 0), "Provença");
+                        getLayer(2).draw(minecraftia, 192, 63, MapColorPalette.getColor(0, 0, 0), "Pl. Cat.");
+                    }
+
+                    else if (Objects.equals(liniatren, "S5A")) {
+                        getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Pl. Cat.");
+                        getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "Provença");
+                        getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "Sarrià");
+                        getLayer(2).draw(minecraftia, 62, 63, MapColorPalette.getColor(0, 0, 0), "St. Cugat");
+                    }
+
+                    else if (Objects.equals(liniatren, "S5B")) {
+                        getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "St. Cugat");
+                        getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "Sarrià");
+                        getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "Provença");
+                        getLayer(2).draw(minecraftia, 62, 63, MapColorPalette.getColor(0, 0, 0), "Pl. Cat.");
+                    }
+
+                    else if (Objects.equals(liniatren, "S6A")) {
+                        getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "UAB");
+                        getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "Volpell.");
+                        getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "St. Cugat");
+                        getLayer(2).draw(minecraftia, 62, 63, MapColorPalette.getColor(0, 0, 0), "Sarrià");
+                        getLayer(2).draw(minecraftia, 62, 82, MapColorPalette.getColor(0, 0, 0), "Provença");
+                        getLayer(2).draw(minecraftia, 62, 99, MapColorPalette.getColor(0, 0, 0), "Pl. Cat.");
+                    }
+
+                    else if (Objects.equals(liniatren, "S6B")) {
+                        getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Pl. Cat");
+                        getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "Provença");
+                        getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "Sarrià");
+                        getLayer(2).draw(minecraftia, 62, 63, MapColorPalette.getColor(0, 0, 0), "P. Funicul.");
+                        getLayer(2).draw(minecraftia, 62, 82, MapColorPalette.getColor(0, 0, 0), "St. Cugat");
+                        getLayer(2).draw(minecraftia, 62, 99, MapColorPalette.getColor(0, 0, 0), "Volpell.");
+                        getLayer(2).draw(minecraftia, 127, 63, MapColorPalette.getColor(0, 0, 0), "UAB");
+                    }
+
+                    else if (Objects.equals(liniatren, "S7A")) {
+                        getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Pl. Cat.");
+                        getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "Provença");
+                        getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "Sarrià");
+                        getLayer(2).draw(minecraftia, 62, 63, MapColorPalette.getColor(0, 0, 0), "St. Cugat");
+                        getLayer(2).draw(minecraftia, 62, 82, MapColorPalette.getColor(0, 0, 0), "Rubí");
+                    }
+
+                    else if (Objects.equals(liniatren, "S7B")) {
+                        getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Rubí");
+                        getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "St. Cugat");
+                        getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "Sarrià");
+                        getLayer(2).draw(minecraftia, 62, 63, MapColorPalette.getColor(0, 0, 0), "Provença");
+                        getLayer(2).draw(minecraftia, 62, 82, MapColorPalette.getColor(0, 0, 0), "Pl. Cat.");
+                    }
+
+                    else if (Objects.equals(liniatren, "R5A")) {
                         getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Pl. Esp.");
                         getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "Euro.|Fira");
                         getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "Gornal");
@@ -302,9 +519,26 @@ public class ManualDisplays {
                         getLayer(2).draw(minecraftia, 127, 82, MapColorPalette.getColor(0, 0, 0), "Olesa de M.");
                         getLayer(2).draw(minecraftia, 127, 99, MapColorPalette.getColor(0, 0, 0), "Monistrol M.");
                         getLayer(2).draw(minecraftia, 192, 63, MapColorPalette.getColor(0, 0, 0), "C. i el Vilar");
-                        getLayer(2).draw(minecraftia, 192, 82, MapColorPalette.getColor(0, 0, 0), "M.-Viladordis");
-                        getLayer(2).draw(minecraftia, 192, 99, MapColorPalette.getColor(0, 0, 0), "M.-Baixador");
-                    } else if (Objects.equals(liniatren, "R50")) {
+                        getLayer(2).draw(minecraftia, 192, 82, MapColorPalette.getColor(0, 0, 0), "M.-Vdord.");
+                        getLayer(2).draw(minecraftia, 192, 99, MapColorPalette.getColor(0, 0, 0), "M.-Bdor.");
+                    }
+
+                    else if (Objects.equals(liniatren, "R5B")) {
+                        getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "M.-Bdor.");
+                        getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "M.-Vdord.");
+                        getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "C. i el Vilar");
+                        getLayer(2).draw(minecraftia, 62, 63, MapColorPalette.getColor(0, 0, 0), "Monistrol M.");
+                        getLayer(2).draw(minecraftia, 62, 82, MapColorPalette.getColor(0, 0, 0), "Olesa de M.");
+                        getLayer(2).draw(minecraftia, 62, 99, MapColorPalette.getColor(0, 0, 0), "Nartorell");
+                        getLayer(2).draw(minecraftia, 127, 63, MapColorPalette.getColor(0, 0, 0), "Molí Nou");
+                        getLayer(2).draw(minecraftia, 127, 82, MapColorPalette.getColor(0, 0, 0), "Sant Boi");
+                        getLayer(2).draw(minecraftia, 127, 99, MapColorPalette.getColor(0, 0, 0), "Cornellà-R.");
+                        getLayer(2).draw(minecraftia, 192, 63, MapColorPalette.getColor(0, 0, 0), "Gornal");
+                        getLayer(2).draw(minecraftia, 192, 82, MapColorPalette.getColor(0, 0, 0), "Euro.|Fira");
+                        getLayer(2).draw(minecraftia, 192, 99, MapColorPalette.getColor(0, 0, 0), "Pl. Esp.");
+                    }
+
+                    else if (Objects.equals(liniatren, "R50A")) {
                         getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Pl. Esp.");
                         getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "Euro.|Fira");
                         getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "Gornal");
@@ -313,9 +547,25 @@ public class ManualDisplays {
                         getLayer(2).draw(minecraftia, 62, 99, MapColorPalette.getColor(0, 0, 0), "Martorell");
                         getLayer(2).draw(minecraftia, 127, 63, MapColorPalette.getColor(0, 0, 0), "Olesa de M.");
                         getLayer(2).draw(minecraftia, 127, 82, MapColorPalette.getColor(0, 0, 0), "Monistrol M.");
-                        getLayer(2).draw(minecraftia, 127, 99, MapColorPalette.getColor(0, 0, 0), "M.-Viladordis");
-                        getLayer(2).draw(minecraftia, 192, 63, MapColorPalette.getColor(0, 0, 0), "M.-Baixador");
-                    } else if (Objects.equals(liniatren, "R6")) {
+                        getLayer(2).draw(minecraftia, 127, 99, MapColorPalette.getColor(0, 0, 0), "M.-Vdord.");
+                        getLayer(2).draw(minecraftia, 192, 63, MapColorPalette.getColor(0, 0, 0), "M.-Bdor.");
+                    }
+
+                    else if (Objects.equals(liniatren, "R50B")) {
+                        getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "M.-Bdor.");
+                        getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "M.-Vdord.");
+                        getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "Monistrol M.");
+                        getLayer(2).draw(minecraftia, 62, 63, MapColorPalette.getColor(0, 0, 0), "Olesa de M.");
+                        getLayer(2).draw(minecraftia, 62, 82, MapColorPalette.getColor(0, 0, 0), "Nartorell");
+                        getLayer(2).draw(minecraftia, 62, 99, MapColorPalette.getColor(0, 0, 0), "Sant Boi");
+                        getLayer(2).draw(minecraftia, 127, 63, MapColorPalette.getColor(0, 0, 0), "Molí Nou");
+                        getLayer(2).draw(minecraftia, 127, 82, MapColorPalette.getColor(0, 0, 0), "Cornellà-R.");
+                        getLayer(2).draw(minecraftia, 127, 99, MapColorPalette.getColor(0, 0, 0), "Gornal");
+                        getLayer(2).draw(minecraftia, 192, 63, MapColorPalette.getColor(0, 0, 0), "Euro.|Fira");
+                        getLayer(2).draw(minecraftia, 192, 82, MapColorPalette.getColor(0, 0, 0), "Pl. Esp.");
+                    }
+
+                    else if (Objects.equals(liniatren, "R6A")) {
                         getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Pl. Esp.");
                         getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "Euro.|Fira");
                         getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "Gornal");
@@ -326,9 +576,22 @@ public class ManualDisplays {
                         getLayer(2).draw(minecraftia, 127, 82, MapColorPalette.getColor(0, 0, 0), "St. Esteve S.");
                         getLayer(2).draw(minecraftia, 127, 99, MapColorPalette.getColor(0, 0, 0), "V. del Camí");
                         getLayer(2).draw(minecraftia, 192, 63, MapColorPalette.getColor(0, 0, 0), "Igualada");
-                        getLayer(2).draw(minecraftia, 192, 82, MapColorPalette.getColor(0, 0, 0), "");
-                        getLayer(2).draw(minecraftia, 192, 99, MapColorPalette.getColor(0, 0, 0), "");
-                    } else if (Objects.equals(liniatren, "R60")) {
+                    }
+
+                    else if (Objects.equals(liniatren, "R6B")) {
+                        getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Igualada");
+                        getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "V. del Camí");
+                        getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "St. Esteve S.");
+                        getLayer(2).draw(minecraftia, 62, 63, MapColorPalette.getColor(0, 0, 0), "Martorell");
+                        getLayer(2).draw(minecraftia, 62, 82, MapColorPalette.getColor(0, 0, 0), "Molí Nou");
+                        getLayer(2).draw(minecraftia, 62, 99, MapColorPalette.getColor(0, 0, 0), "St. Boi");
+                        getLayer(2).draw(minecraftia, 127, 63, MapColorPalette.getColor(0, 0, 0), "Cornellà-R-");
+                        getLayer(2).draw(minecraftia, 127, 82, MapColorPalette.getColor(0, 0, 0), "Gornal");
+                        getLayer(2).draw(minecraftia, 127, 99, MapColorPalette.getColor(0, 0, 0), "Euro.|Fira");
+                        getLayer(2).draw(minecraftia, 192, 63, MapColorPalette.getColor(0, 0, 0), "Pl. Esp.");
+                    }
+
+                    else if (Objects.equals(liniatren, "R60A")) {
                         getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Pl. Esp.");
                         getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "Euro.|Fira");
                         getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "Gornal");
@@ -337,7 +600,24 @@ public class ManualDisplays {
                         getLayer(2).draw(minecraftia, 62, 99, MapColorPalette.getColor(0, 0, 0), "Martorell");
                         getLayer(2).draw(minecraftia, 127, 63, MapColorPalette.getColor(0, 0, 0), "Igualada");
                     }
-                } else if (senseParada) {
+
+                    else if (Objects.equals(liniatren, "R60B")) {
+                        getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Igualada");
+                        getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "Martorell");
+                        getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "St. Boi");
+                        getLayer(2).draw(minecraftia, 62, 63, MapColorPalette.getColor(0, 0, 0), "Cornellà-R.");
+                        getLayer(2).draw(minecraftia, 62, 82, MapColorPalette.getColor(0, 0, 0), "Gornal");
+                        getLayer(2).draw(minecraftia, 62, 99, MapColorPalette.getColor(0, 0, 0), "Euro.|Fira");
+                        getLayer(2).draw(minecraftia, 127, 63, MapColorPalette.getColor(0, 0, 0), "Pl. Esp.");
+                    }
+
+                    else if (Objects.equals(liniatren, "DESC")) {
+                        getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "AVÍS: No hem pogut obtenir");
+                        getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "mes dades d'aquest tren.");
+                    }
+                }
+
+                else if (senseParada) {
                     getLayer(0).clear();
                     getLayer(0).draw(Assets.getMapTexture(imgDir + "ManualDisplay3C.png"), 0, 0);
                 } else {
@@ -353,6 +633,7 @@ public class ManualDisplays {
                 getLayer(0).draw(Assets.getMapTexture(imgDir + "ManualDisplay3E.png"), 0, 0);
             }
 
+            tickCount++;
             LocalDateTime now = LocalDateTime.now();
             getLayer(4).clear();
             getLayer(4).setAlignment(MapFont.Alignment.MIDDLE);
@@ -371,35 +652,102 @@ public class ManualDisplays {
                 plataforma = via;
             }
 
+            String trainLine;
+            String dest = null;
+
             String codiParada = displayID.replaceAll("[0-9]","");
             if(! properties.get("ID", String.class).equals(displayID)) return false;
 
-            if (dadesTren.getProperties().matchTag("L8") && dadesTren.getProperties().matchTag("FGC")){
-                liniatren = "L8";
-            } else if (dadesTren.getProperties().matchTag("S3") && dadesTren.getProperties().matchTag("FGC")){
-                liniatren = "S3";
-            } else if (dadesTren.getProperties().matchTag("S8") && dadesTren.getProperties().matchTag("FGC")){
-                liniatren = "S8";
-            } else if (dadesTren.getProperties().matchTag("R5") && dadesTren.getProperties().matchTag("FGC")){
-                liniatren = "R5";
-            } else if (dadesTren.getProperties().matchTag("R50") && dadesTren.getProperties().matchTag("FGC")){
-                liniatren = "R50";
-            } else if (dadesTren.getProperties().matchTag("R6") && dadesTren.getProperties().matchTag("FGC")){
-                liniatren = "R6";
-            } else if (dadesTren.getProperties().matchTag("R60") && dadesTren.getProperties().matchTag("FGC")){
-                liniatren = "R60";
+            if (dadesTren.getProperties().matchTag("L6") && dadesTren.getProperties().matchTag("FGC") && dadesTren.getProperties().getDestination().equalsIgnoreCase("Sarrià")){
+                trainLine = "L6";
+                liniatren = "L6A";
+            } else if (dadesTren.getProperties().matchTag("L7") && dadesTren.getProperties().matchTag("FGC") && dadesTren.getProperties().getDestination().equalsIgnoreCase("Av. Tibidabo")){
+                trainLine = "L7";
+                liniatren = "L7A";
+            } else if (dadesTren.getProperties().matchTag("L8") && dadesTren.getProperties().matchTag("FGC") && dadesTren.getProperties().getDestination().equalsIgnoreCase("Molí Nou")){
+                trainLine = "L8";
+                liniatren = "L8A";
+            } else if (dadesTren.getProperties().matchTag("L12") && dadesTren.getProperties().matchTag("FGC") && dadesTren.getProperties().getDestination().equalsIgnoreCase("Sarrià")){
+                trainLine = "L12";
+                liniatren = "L12A";
+            } else if (dadesTren.getProperties().matchTag("S5") && dadesTren.getProperties().matchTag("FGC") && dadesTren.getProperties().getDestination().equalsIgnoreCase("Sant Cugat")){
+                trainLine = "S5";
+                liniatren = "S5A";
+            } else if (dadesTren.getProperties().matchTag("S6") && dadesTren.getProperties().matchTag("FGC") && dadesTren.getProperties().getDestination().equalsIgnoreCase("UAB")){
+                trainLine = "S6";
+                liniatren = "S6B";
+            } else if (dadesTren.getProperties().matchTag("S7") && dadesTren.getProperties().matchTag("FGC") && dadesTren.getProperties().getDestination().equalsIgnoreCase("Rubí")){
+                trainLine = "S7";
+                liniatren = "S7B";
+            } else if (dadesTren.getProperties().matchTag("R5") && dadesTren.getProperties().matchTag("FGC") && dadesTren.getProperties().getDestination().equalsIgnoreCase("Manresa-Bdor.")){
+                trainLine = "R5";
+                liniatren = "R5A";
+            } else if (dadesTren.getProperties().matchTag("R50") && dadesTren.getProperties().matchTag("FGC") && dadesTren.getProperties().getDestination().equalsIgnoreCase("Manresa-Bdor.")){
+                trainLine = "R50";
+                liniatren = "R50A";
+            } else if (dadesTren.getProperties().matchTag("R6") && dadesTren.getProperties().matchTag("FGC") && dadesTren.getProperties().getDestination().equalsIgnoreCase("Igualada")){
+                trainLine = "R6";
+                liniatren = "R6A";
+            } else if (dadesTren.getProperties().matchTag("R60") && dadesTren.getProperties().matchTag("FGC") && dadesTren.getProperties().getDestination().equalsIgnoreCase("Igualada")){
+                trainLine = "R60";
+                liniatren = "R60A";
+            } else if (dadesTren.getProperties().matchTag("RL1") && dadesTren.getProperties().matchTag("FGC") && dadesTren.getProperties().getDestination().equalsIgnoreCase("Balaguer")){
+                trainLine = "RL1";
+                liniatren = "RL1A";
+            } else if (dadesTren.getProperties().matchTag("RL2") && dadesTren.getProperties().matchTag("FGC") && dadesTren.getProperties().getDestination().equalsIgnoreCase("P. de Segur")){
+                trainLine = "RL2";
+                liniatren = "RL2A";
+            } else if (dadesTren.getProperties().matchTag("L6") && dadesTren.getProperties().matchTag("FGC") && dadesTren.getProperties().getDestination().equalsIgnoreCase("Pl. Catalunya")){
+                trainLine = "L6";
+                liniatren = "L6B";
+            } else if (dadesTren.getProperties().matchTag("L7") && dadesTren.getProperties().matchTag("FGC") && dadesTren.getProperties().getDestination().equalsIgnoreCase("Pl. Catalunya")){
+                trainLine = "L7";
+                liniatren = "L7B";
+            } else if (dadesTren.getProperties().matchTag("L8") && dadesTren.getProperties().matchTag("FGC") && dadesTren.getProperties().getDestination().equalsIgnoreCase("Pl. Espanya")){
+                trainLine = "L8";
+                liniatren = "L8B";
+            } else if (dadesTren.getProperties().matchTag("L12") && dadesTren.getProperties().matchTag("FGC") && dadesTren.getProperties().getDestination().equalsIgnoreCase("Reina Elisenda")){
+                trainLine = "L12";
+                liniatren = "L12B";
+            } else if (dadesTren.getProperties().matchTag("S5") && dadesTren.getProperties().matchTag("FGC") && dadesTren.getProperties().getDestination().equalsIgnoreCase("Pl. Catalunya")){
+                trainLine = "S5";
+                liniatren = "S5B";
+            } else if (dadesTren.getProperties().matchTag("S6") && dadesTren.getProperties().matchTag("FGC") && dadesTren.getProperties().getDestination().equalsIgnoreCase("Pl. Catalunya")){
+                trainLine = "S6";
+                liniatren = "S6A";
+            } else if (dadesTren.getProperties().matchTag("S7") && dadesTren.getProperties().matchTag("FGC") && dadesTren.getProperties().getDestination().equalsIgnoreCase("Pl. Catalunya")){
+                trainLine = "S7";
+                liniatren = "S7A";
+            } else if (dadesTren.getProperties().matchTag("R5") && dadesTren.getProperties().matchTag("FGC") && dadesTren.getProperties().getDestination().equalsIgnoreCase("Pl. Espanya")){
+                trainLine = "R5";
+                liniatren = "R5B";
+            } else if (dadesTren.getProperties().matchTag("R50") && dadesTren.getProperties().matchTag("FGC") && dadesTren.getProperties().getDestination().equalsIgnoreCase("Pl. Espanya")){
+                trainLine = "R50";
+                liniatren = "R50B";
+            } else if (dadesTren.getProperties().matchTag("R6") && dadesTren.getProperties().matchTag("FGC") && dadesTren.getProperties().getDestination().equalsIgnoreCase("Pl. Espanya")){
+                trainLine = "R6";
+                liniatren = "R6B";
+            } else if (dadesTren.getProperties().matchTag("R60") && dadesTren.getProperties().matchTag("FGC") && dadesTren.getProperties().getDestination().equalsIgnoreCase("Pl. Espanya")){
+                trainLine = "R60";
+                liniatren = "R60B";
+            } else if (dadesTren.getProperties().matchTag("RL1") && dadesTren.getProperties().matchTag("FGC") && dadesTren.getProperties().getDestination().equalsIgnoreCase("Lleida")){
+                trainLine = "RL1";
+                liniatren = "RL1B";
+            } else if (dadesTren.getProperties().matchTag("RL2") && dadesTren.getProperties().matchTag("FGC") && dadesTren.getProperties().getDestination().equalsIgnoreCase("Lleida")){
+                trainLine = "RL1";
+                liniatren = "RL2B";
+            } else {
+                trainLine = "what";
+                liniatren = "DESC";
             }
 
             getLayer(2).clear();
             getLayer(3).clear();
 
-            String trainLine = null;
-            String dest = null;
 
             if(!dadesTren.getProperties().matchTag(codiParada)) {
                 senseParada = true;
             } else {
-                trainLine = BoardUtils.getTrainLine(dadesTren.getProperties().getTrainName());
                 dest = dadesTren.getProperties().getDestination();
             }
 
@@ -416,11 +764,18 @@ public class ManualDisplays {
                 getLayer(3).draw(lineIcon, 22, 45);
                 getLayer(3).draw(minecraftia, 51, 45, MapColorPalette.COLOR_BLACK, dest);
                 getLayer(3).draw(minecraftia, 124, 45, MapColorPalette.COLOR_BLACK, plataforma);
-                getLayer(3).draw(minecraftia, 138, 45, MapColorPalette.COLOR_BLACK, LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm")));
+                getLayer(3).draw(minecraftia, 138, 45, MapColorPalette.COLOR_BLACK, LocalDateTime.now().plusSeconds(clearIn).format(DateTimeFormatter.ofPattern("HH:mm")));
 
-                if (Objects.equals(liniatren, "R50") || Objects.equals(liniatren, "R60")) {
-                    getLayer(3).draw(minecraftia, 180, 45, MapColorPalette.COLOR_BLACK, "Semidirecte");
+                if (liniatren.contains("R50") || liniatren.contains("R60")) {
+                    getLayer(3).draw(minecraftia, 176, 45, MapColorPalette.COLOR_BLACK, "Semidirecte");
+                } else if (liniatren.contains("S5")) {
+                    getLayer(3).draw(minecraftia, 176, 45, MapColorPalette.COLOR_BLACK, "Servei Escolar");
+                } else if (liniatren.contains("L6") || liniatren.contains("L7") || liniatren.contains("L8") || liniatren.contains("L12")) {
+                    getLayer(3).draw(minecraftia, 176, 45, MapColorPalette.COLOR_BLACK, "Bitllet T-4 válid");
+                } else if (liniatren.equalsIgnoreCase("RL2")) {
+                    getLayer(3).draw(minecraftia, 176, 45, MapColorPalette.COLOR_BLACK, "ATM no válid");
                 }
+
                 //////////////////////////////////////////////////////////
             }
 
