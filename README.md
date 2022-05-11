@@ -3,17 +3,52 @@ Gestió d'informació i funcionament de trens al servidor de Minecraft.
 
 | Index  |
 |---|
-| 1. [Pantalles programades](#Pantalles programades)  |
-|   1.1. [Models disponibles](##Models disponibles)  |
-| 2. [Pantalles manuals](#Pantalles manuals)  |
-|   2.1. [Models disponibles](##Models disponibles)  |
-|   2.2. [Pantalles dinámiques](##Pantalles dinámiques)  |
-| 3. [Pantalles de Signlink](#Pantalles de Signlink)  |
-| 4. [Comandaments](#Pantalles programades)  |
-| 5. [Cartells Traincarts](#Cartells Traincarts)  |
-| 6. [Configuració](#Configuració)  |
-| 7. [Linies suportades](#Linies suportades)  |
-| 8. [Suport](#Suport)  |
+| 1. [Pantalles programades](#pantalles-programades)  |
+| ⠀1.1. [Models disponibles](#models-disponibles)  |
+| 2. [Pantalles manuals](#pantalles-manuals)  |
+| ⠀2.1. [Models disponibles](#models-disponibles-1)  |
+| ⠀2.2. [Pantalles dinàmiques](#pantalles-dinàmiques)  |
+| 3. [Pantalles de Signlink](#pantalles-de-signlink)  |
+| ⠀3.1. [Models disponibles](#models-disponibles-2)  |
+| 4. [Comandaments](#comandaments)  |
+| 5. [Cartells Traincarts](#cartells-traincarts)  |
+| ⠀5.1. [tagaudio](#tagaudio)  |
+| ⠀5.2. [displaymanual](#displaymanual)  |
+| ⠀5.3. [reiniciardisplay](#reiniciardisplay)  |
+| ⠀5.4. [noparadisplay](#noparadisplay)  |
+| ⠀5.5. [updateservice](#updateservice)  |
+| ⠀5.6. [horn](#horn)  |
+| ⠀5.7. [chime](#chime)  |
+| 6. [Configuració](#configuració)  |
+| 7. [Linies suportades](#linies-suportades)  |
+| ⠀7.1. [FGC](#fgc)  |
+| ⠀⠀7.1.1. [Barcelona - Vallès](#barcelona-vallès)  |
+| ⠀⠀7.1.2. [Llobregat - Anoia](#llobregat-anoia)  |
+| ⠀⠀7.1.3. [Lleida - La Pobla de Segur](#lleida-la-pobla-de-segur)  |
+| ⠀7.2. [Renfe (WIP)](#renfe)  |
+| ⠀⠀7.2.1. [Rodalies de Catalunya](#rodalies-de-catalunya)  |
+| ⠀⠀⠀7.2.1.1. [Rodalia de Barcelona](#rodalia-de-barcelona)  |
+| ⠀⠀⠀⠀7.2.1.1.1. [R1](#r1)  |
+| ⠀⠀⠀⠀7.2.1.1.2. [R2](#r2)  |
+| ⠀⠀⠀⠀⠀7.2.1.1.2.1 [R2](#r2-centre)  |
+| ⠀⠀⠀⠀⠀7.2.1.1.2.2 [R2 Nord](#r2-nord)  |
+| ⠀⠀⠀⠀⠀7.2.1.1.2.3 [R2 Sud](#r2-sud)  |
+| ⠀⠀⠀⠀7.2.1.1.3. [R3 (Rodalia)](#r3)  |
+| ⠀⠀⠀⠀7.2.1.1.4. [R4](#r4)  |
+| ⠀⠀⠀⠀7.2.1.1.5. [R7](#r7)  |
+| ⠀⠀⠀⠀7.2.1.1.6. [R8](#r8)  |
+| ⠀⠀⠀⠀7.2.1.1.7. [R10](#r10)  |
+| ⠀⠀⠀7.2.1.2. [Rodalia de Tarragona](#rodalia-de-tarragona)  |
+| ⠀⠀⠀⠀7.2.1.2.1. [RT1](#rt1)  |
+| ⠀⠀⠀⠀7.2.1.2.2. [RT2](#rt2)  |
+|⠀ ⠀⠀7.2.1.3. [Rodalia de Girona](#rodalia-de-girona)  |
+| ⠀⠀⠀⠀7.2.1.3.1. [RG1](#rg1)  |
+| ⠀⠀7.2.2. [Rodalia València](#rodalia-valencia)  |
+| ⠀⠀7.2.3. [Cercanías Alicante](#cercanias-alicante)  |
+| ⠀⠀7.2.4. [Altres serveis](#altres-serveis)  |
+| ⠀⠀⠀7.2.4.1. [Regionals i Mitja Distància](#regionals-i-mitja-distància)  |
+| ⠀⠀⠀7.2.4.2. [Llarga Distància](#regionals-i-mitja-distància)  |
+| 8. [Suport](#suport)  |
 
 ## Pantalles programades
 
@@ -227,7 +262,8 @@ reiniciardisplay
 
 Reinicia un `displaymanual`, deixant de mostrar informació sobre el tren i passant a la visualització predeterminada.
 
-#### noparadisplay (Ja no funciona des-de la versió 1.5.11)
+#### noparadisplay
+***AVÍS: (Aquest cartell ja no funciona des-de la versió 1.5.11)***
 
 ```
 [train]
@@ -247,6 +283,26 @@ updateservice
 ```
 
 Actualitza el servei d'un tren registrat, tenint en compte el nou nom i destinació.
+
+#### horn
+
+```
+[train]
+horn
+```
+
+Fa sonar la bocina del tren. Per afegir la bocina al tren, has de posar al tren el tag ``horn_nom.del.so``. En cas de no tenir cap so configurat, no sona res.
+
+#### chime
+
+```
+[train]
+chime
+```
+
+***(Molt aviat)***
+Fa sonar el timbre del tren. Per afegir la timbre al tren, has de posar al tren el tag ``chime_nom.del.so``. En cas de no tenir cap so configurat, no sona res.
+
 
 ## Configuració
 
@@ -293,83 +349,84 @@ A continuació, les linies que suporten en aquest plugin
 * TT: Tag que necessita el tren (``/train addtag TT``)
     - _(Pot ser que en algunes linies necessitin més d'un tag, en aquest cas, el separarè amb una coma)_
 
-- **FGC**
-    - Barcelona-Vallés
-        - L6
-            * NT: L6_...
-            * TT: FGC, L6
-        - L7
-            * NT: L7_...
-            * TT: FGC, L7
-        - L12
-            * NT: L12_...
-            * TT: FGC, L12
-        - S1
-            * NT: S1_...
-            * TT: FGC, S1
-        - S2
-            * NT: S2_...
-            * TT: FGC, S2
-        - S5
-            * NT: S5_...
-            * TT: FGC, S5
-        - S6
-            * NT: S6_...
-            * TT: FGC, S6
-        - S7
-            * NT: S7_...
-            * TT: FGC, S7
+#### **FGC**
+###### Barcelona-Vallès
+- L6
+    * NT: L6_...
+    * TT: FGC, L6
+- L7
+    * NT: L7_...
+    * TT: FGC, L7
+- L12
+    * NT: L12_...
+    * TT: FGC, L12
+- S1
+    * NT: S1_...
+    * TT: FGC, S1
+- S2
+    * NT: S2_...
+    * TT: FGC, S2
+- S5
+    * NT: S5_...
+    * TT: FGC, S5
+- S6
+    * NT: S6_...
+    * TT: FGC, S6
+- S7
+    * NT: S7_...
+    * TT: FGC, S7
 
 
-    - Llobregat-Anoia
-        - L8
-            * NT: L8_...
-            * TT: FGC, L8
-        - S3
-            * NT: S3_...
-            * TT: FGC, S3
-        - S4
-            * NT: S4_...
-            * TT: FGC, S4
-        - S8
-            * NT: S8_...
-            * TT: FGC, S8
-        - R5
-            * NT: R5_...
-            * TT: FGC, R5
-        - R50
-            * NT: R50_...
-            * TT: FGC, R50
-        - R6
-            * NT: R6_...
-            * TT: FGC, R6
-        - R60
-            * NT: R60_...
-            * TT: FGC, R60
+###### Llobregat-Anoia
+- L8
+    * NT: L8_...
+    * TT: FGC, L8
+- S3
+    * NT: S3_...
+    * TT: FGC, S3
+- S4
+    * NT: S4_...
+    * TT: FGC, S4
+- S8
+    * NT: S8_...
+    * TT: FGC, S8
+- R5
+    * NT: R5_...
+    * TT: FGC, R5
+- R50
+    * NT: R50_...
+    * TT: FGC, R50
+- R6
+    * NT: R6_...
+    * TT: FGC, R6
+- R60
+    * NT: R60_...
+    * TT: FGC, R60
 
 
-    - Lleida-La Pobla de Segur
-        - RL1
-            * NT: RL1_...
-            * TT: FGC, RL1
-        - RL2
-            * NT: RL2_...
-            * TT: FGC, RL2
+###### Lleida-La Pobla de Segur
+- RL1
+    * NT: RL1_...
+    * TT: FGC, RL1
+- RL2
+    * NT: RL2_...
+    * TT: FGC, RL2
 
 
 _(Completar després)_
-- **Rodalies de Catalunya**
-    - Rodalia de Barcelona
-        - R1
-            - *Servei A*
-                * NT: R1_ServeiA
-                * TT: R1, R1A
-            - *Servei B*
-                * NT: R1_ServeiB
-                * TT: R1, R1B
-            - *Servei C*
-                * NT: R1_ServeiC
-                * TT: R1, R1C
+### Renfe
+#### Rodalies de Catalunya
+##### Rodalia de Barcelona
+###### R1
+- *Servei A*
+    * NT: R1_ServeiA
+    * TT: R1, R1A
+- *Servei B*
+    * NT: R1_ServeiB
+    * TT: R1, R1B
+- *Servei C*
+    * NT: R1_ServeiC
+    * TT: R1, R1C
 
 
 ## Suport
