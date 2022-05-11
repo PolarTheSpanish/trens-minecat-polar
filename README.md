@@ -1,7 +1,21 @@
 # trens-minecat
 Gestió d'informació i funcionament de trens al servidor de Minecraft.
 
-## Pantalles
+| Index  |
+|---|
+| 1. [Pantalles programades](#Pantalles programades)  |
+|   1.1. [Models disponibles](##Models disponibles)  |
+| 2. [Pantalles manuals](#Pantalles manuals)  |
+|   2.1. [Models disponibles](##Models disponibles)  |
+|   2.2. [Pantalles dinámiques](##Pantalles dinámiques)  |
+| 3. [Pantalles de Signlink](#Pantalles de Signlink)  |
+| 4. [Comandaments](#Pantalles programades)  |
+| 5. [Cartells Traincarts](#Cartells Traincarts)  |
+| 6. [Configuració](#Configuració)  |
+| 7. [Linies suportades](#Linies suportades)  |
+| 8. [Suport](#Suport)  |
+
+## Pantalles programades
 
 `/tm crear pantalla <model> <pantalla> <nom>`
   - `model` Número de model de pantalla que es vol utilitzar.
@@ -44,11 +58,13 @@ La pantalla s'actualitzarà quan s'activi el cartell o un tren passi per sobre i
 
 Per generar una pantalla, caldrà utilitzar el comandament `/tm crear displaymanual <model> <nom>`, on el nom ha de coincidir amb el del cartell Traincarts.
 
-**ACTUALITZACIÓ:** Ara des-de de la nova versió (< 1.5.11) es obligatori que el tren tingui un prefix en el nom del tren, i un "tag d'estació" per que s'activin els cartells i no surtin els cartells de "sense parada".
 
-Per exemple, si el codi del cartell (displaymanual, tercera linia) es ``EST3`` (o ``EST 3``), el tren ha de tenir un tag que sigui el codi (sense el número) -> ``EST``. En cas contrari, el cartell mostrará com si el tren no faci parad
+**ACTUALITZACIÓ:** Ara des-de de la nova versió (< 1.5.11) es obligatori que el tren tingui un prefix que sigui [el nom de la linia i el seu tag (especialment pels displays de FGC)](#Linies Suportades), i un "tag d'estació" per que s'activin els cartells i no surtin els cartells de "sense parada".
 
-Si passa un tren sense parada, es pot utilitzar el següent cartell:
+Per exemple, si el codi del cartell (displaymanual, tercera linia) es ``EST3`` (o ``EST 3``), el tren ha de tenir un tag que sigui el codi (sense el número) -> ``EST``. En cas contrari, el cartell mostrará com si el tren no faci parada.
+
+
+Si passa un tren sense parada, es pot utilitzar el següent cartell **(només funciona amb versions anteriors a la 1.15.11)**:
 ```
 [train]
 noparadisplay
@@ -64,6 +80,8 @@ _És exactament igual visualment que el model 3 de pantalla normal, però no mos
 
 Es pot configurar la imatge que es mostrarà quan no hi ha cap tren amb `/tm configurar displaymanual marca <nom>`. Opcions pel `<nom>` son `rodalies` o `renfe`.
 
+_Aquestos displays seràn taronges si la marca es ``rodalies`` [ja que la majoria d'estacions tenen els displays així]() i en blanc si la marca es ``renfe``._
+
 ###### 2:
 _Pròximament_
 
@@ -74,15 +92,26 @@ _Pròximament_
 
 ![imatge](/imatges/manual/4.png)
 
+###### 5:
+
+![imatge](/imatges/manual/5.png)
+
 ###### 6:
 ![imatge](/imatges/manual/6.png)
 
 Es pot configurar la imatge que es mostrarà quan no hi ha cap tren amb `/tm configurar displaymanual marca <nom>`. Opcions pel `<nom>` son `rodalies` o `renfe`.
 
-Atenció! Per utilitzar aquest display cal configurar el número d'andana. Per fer-ho, agafa l'ítem del mapa amb la mà dreta i executa el comandament `/tm configurar displaymanual andana <número d'andana>`.
+Atenció! Per utilitzar aquestos displays cal configurar el número d'andana. Per fer-ho, agafa l'ítem del mapa amb la mà dreta i executa el comandament `/tm configurar displaymanual andana <número d'andana>`.
 
 ###### 7:
 ![imatge](/imatges/manual/7.png)
+
+#### 8
+###### 8A:
+![imatge](/imatges/manual/8A.png)
+
+###### 8B:
+![imatge](/imatges/manual/8.png)
 
 
 #### Pantalles dinàmiques
@@ -139,7 +168,10 @@ Per actualitzar la destinació mostrada al cartell: `/tm configurar sldisplay de
 
 `/tm spawn <món> <x> <y> <z>` Genera un tren a les coordenades especificades. Aquestes coordenades han de ser les d'un cartell `spawner`, i no les de la via on ha d'aparèixer un tren.
 
-`/tm horn` Fa sonar el so definit a les propietats del tren com a `horn_nom.del.so`. També es pot executar amb un cartell `[train] horn`.
+`/tm horn` Fa sonar la botzina definit a les propietats del tren com a `horn_nom.del.so`. També es pot executar amb un cartell `[train] horn`.
+
+~~`/tm chime` Fa sonar el so del timbre definit a les propietats del tren com a `chime_nom.del.so`. També es pot executar amb un cartell `[train] chime`.~~
+_(Molt aviat)_
 
 `/tm crear estatdelservei` Crea una pantalla gran amb totes les línies. Es pot posar un text personalitzat amb `/var edit <nom> set <valor>`
 
@@ -158,7 +190,7 @@ Per actualitzar la destinació mostrada al cartell: `/tm configurar sldisplay de
 
 `/tm iteminfo` Obté informació de l'ítem agafat amb la mà (funciona només amb mapDisplays i ítems que tinguin tags).
 
-_Nota: en la majoria de paràmetres, excepte els noms del tren, els caràcters `_` són substituits per une espai._
+_Nota: en la majoria de paràmetres, excepte els noms del tren, els caràcters `_` són substituits per un espai._
 
 ## Cartells Traincarts
 
@@ -174,7 +206,7 @@ Reprodueix un so quan el tren passa per sobre el cartell. `<nom>` pot ser el nom
 Es pot especificar, opcionalment, un delay que s'esperarà abans de reproduir el so.
 
 
-#### displaymananual
+#### displaymanual
 
 ```
 [train]
@@ -195,7 +227,7 @@ reiniciardisplay
 
 Reinicia un `displaymanual`, deixant de mostrar informació sobre el tren i passant a la visualització predeterminada.
 
-#### noparadisplay
+#### noparadisplay (Ja no funciona des-de la versió 1.5.11)
 
 ```
 [train]
@@ -205,6 +237,7 @@ noparadisplay
 ```
 
 Igual que el displaymanual, però mostra un missatge a la pantalla que indica que el tren no pararà en aquesta estació.
+_(S'espera eliminar aquest cartell en la versió 1.5.12)_
 
 #### updateservice
 
