@@ -297,65 +297,99 @@ public class ManualDisplays {
 
                     getLayer(0).clear();
                     getLayer(0).draw(Assets.getMapTexture(imgDir + "ManualDisplay3B.png"), 0, 0);
-                    if (Objects.equals(liniatren, "RL1A")) {
-                        getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Lleida");
-                        getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "Alcoletge");
-                        getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "Térmens");
-                        getLayer(2).draw(minecraftia, 62, 63, MapColorPalette.getColor(0, 0, 0), "V. Balaguer");
-                        getLayer(2).draw(minecraftia, 62, 82, MapColorPalette.getColor(0, 0, 0), "Balaguer");
-                    }
+//                    if (Objects.equals(liniatren, "RL1A")) {
+//                        getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Lleida");
+//                        getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "Alcoletge");
+//                        getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "Térmens");
+//                        getLayer(2).draw(minecraftia, 62, 63, MapColorPalette.getColor(0, 0, 0), "V. Balaguer");
+//                        getLayer(2).draw(minecraftia, 62, 82, MapColorPalette.getColor(0, 0, 0), "Balaguer");
+//                    }
+//
+//                    if (Objects.equals(liniatren, "RL1B")) {
+//                        getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Balaguer");
+//                        getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "V. Balaguer");
+//                        getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "Térmens");
+//                        getLayer(2).draw(minecraftia, 62, 63, MapColorPalette.getColor(0, 0, 0), "Alcoletge");
+//                        getLayer(2).draw(minecraftia, 62, 82, MapColorPalette.getColor(0, 0, 0), "Lleida");
+//                    }
+//
+//                    else if (Objects.equals(liniatren, "RL2A")) {
+//                        if (!seguentPagina) {
+//                            getLayer(2).clear();
+//                            getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Lleida");
+//                            getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "Alcoletge");
+//                            getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "Térmens");
+//                            getLayer(2).draw(minecraftia, 62, 63, MapColorPalette.getColor(0, 0, 0), "V. Balaguer");
+//                            getLayer(2).draw(minecraftia, 62, 82, MapColorPalette.getColor(0, 0, 0), "Balaguer");
+//                            getLayer(2).draw(minecraftia, 62, 99, MapColorPalette.getColor(0, 0, 0), "Gerb");
+//                            getLayer(2).draw(minecraftia, 127, 63, MapColorPalette.getColor(0, 0, 0), "S.L. Montgai");
+//                            getLayer(2).draw(minecraftia, 127, 82, MapColorPalette.getColor(0, 0, 0), "G. de Tremp");
+//                            getLayer(2).draw(minecraftia, 127, 99, MapColorPalette.getColor(0, 0, 0), "P. de Noguera");
+//                            getLayer(2).draw(minecraftia, 192, 63, MapColorPalette.getColor(0, 0, 0), "Tremp");
+//                            getLayer(2).draw(minecraftia, 192, 82, MapColorPalette.getColor(0, 0, 0), "Talarn");
+//                            getLayer(2).draw(minecraftia, 192, 99, MapColorPalette.getColor(0, 0, 0), "Salàs");
+//                        } else {
+//                            getLayer(2).clear();
+//                            getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Pobla de S.");
+//                        }
+//                    }
+//
+//                    else if (Objects.equals(liniatren, "RL2B")) {
+//                        if (!seguentPagina) {
+//                            getLayer(2).clear();
+//                            getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Pobla de S.");
+//                            getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "Salàs");
+//                            getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "Talarn");
+//                            getLayer(2).draw(minecraftia, 62, 63, MapColorPalette.getColor(0, 0, 0), "Tremp");
+//                            getLayer(2).draw(minecraftia, 62, 82, MapColorPalette.getColor(0, 0, 0), "P. de Noguera");
+//                            getLayer(2).draw(minecraftia, 62, 99, MapColorPalette.getColor(0, 0, 0), "G. de Tremp");
+//                            getLayer(2).draw(minecraftia, 127, 63, MapColorPalette.getColor(0, 0, 0), "S.L. Montgai");
+//                            getLayer(2).draw(minecraftia, 127, 82, MapColorPalette.getColor(0, 0, 0), "Gerb");
+//                            getLayer(2).draw(minecraftia, 127, 99, MapColorPalette.getColor(0, 0, 0), "Balaguer");
+//                            getLayer(2).draw(minecraftia, 192, 63, MapColorPalette.getColor(0, 0, 0), "V. Balaguer");
+//                            getLayer(2).draw(minecraftia, 192, 82, MapColorPalette.getColor(0, 0, 0), "Térmens");
+//                            getLayer(2).draw(minecraftia, 192, 99, MapColorPalette.getColor(0, 0, 0), "Alcoletge");
+//                        } else {
+//                            getLayer(2).clear();
+//                            getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Lleida");
+//                        }
+//                    }
 
-                    if (Objects.equals(liniatren, "RL1B")) {
-                        getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Balaguer");
-                        getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "V. Balaguer");
-                        getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "Térmens");
-                        getLayer(2).draw(minecraftia, 62, 63, MapColorPalette.getColor(0, 0, 0), "Alcoletge");
-                        getLayer(2).draw(minecraftia, 62, 82, MapColorPalette.getColor(0, 0, 0), "Lleida");
-                    }
+  /*     FGC    */
+  /* R R        */
+  /* L L        */
+  /* 1 2        */
+  /*            */  if ((Objects.equals(liniatren, "RL2") && seguentPagina) || (Objects.equals(liniatren, "RL2") && !seguentPagina)) getLayer(2).clear();
+  /* O O  LLD   */  if (Objects.equals(liniatren, "RL1A") || (Objects.equals(liniatren, "RL2A") && !seguentPagina)) getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Lleida");
+  /* O O  ALG   */  if (Objects.equals(liniatren, "RL1A") || (Objects.equals(liniatren, "RL2A") && !seguentPagina)) getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "Alcoletge");
+  /* O O  TRM   */  if (Objects.equals(liniatren, "RL1A") || (Objects.equals(liniatren, "RL2A") && !seguentPagina)) getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "Térmens");
+  /* O O  VBLG  */  if (Objects.equals(liniatren, "RL1A") || (Objects.equals(liniatren, "RL2A") && !seguentPagina)) getLayer(2).draw(minecraftia, 62, 63, MapColorPalette.getColor(0, 0, 0), "V. Balaguer");
+  /* O O  BLG   */  if (Objects.equals(liniatren, "RL1A") || (Objects.equals(liniatren, "RL2A") && !seguentPagina)) getLayer(2).draw(minecraftia, 62, 82, MapColorPalette.getColor(0, 0, 0), "Balaguer");
+  /*   O        */  if (Objects.equals(liniatren, "RL2A") && !seguentPagina) getLayer(2).draw(minecraftia, 62, 99, MapColorPalette.getColor(0, 0, 0), "Gerb");
+  /*   O        */  if (Objects.equals(liniatren, "RL2A") && !seguentPagina) getLayer(2).draw(minecraftia, 127, 63, MapColorPalette.getColor(0, 0, 0), "S.L. Montgai");
+  /*   O        */  if (Objects.equals(liniatren, "RL2A") && !seguentPagina) getLayer(2).draw(minecraftia, 127, 82, MapColorPalette.getColor(0, 0, 0), "G. de Tremp");
+  /*   O        */  if (Objects.equals(liniatren, "RL2A") && !seguentPagina) getLayer(2).draw(minecraftia, 127, 99, MapColorPalette.getColor(0, 0, 0), "P. de Noguera");
+  /*   O        */  if (Objects.equals(liniatren, "RL2A") && !seguentPagina) getLayer(2).draw(minecraftia, 192, 63, MapColorPalette.getColor(0, 0, 0), "Tremp");
+  /*   O        */  if (Objects.equals(liniatren, "RL2A") && !seguentPagina) getLayer(2).draw(minecraftia, 192, 82, MapColorPalette.getColor(0, 0, 0), "Talarn");
+  /*   O        */  if (Objects.equals(liniatren, "RL2A") && !seguentPagina) getLayer(2).draw(minecraftia, 192, 99, MapColorPalette.getColor(0, 0, 0), "Salàs");
+  /*   O        */  if (Objects.equals(liniatren, "RL2A") && seguentPagina) getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Pobla de S.");
 
-                    else if (Objects.equals(liniatren, "RL2A")) {
-                        if (!seguentPagina) {
-                            getLayer(2).clear();
-                            getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Lleida");
-                            getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "Alcoletge");
-                            getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "Térmens");
-                            getLayer(2).draw(minecraftia, 62, 63, MapColorPalette.getColor(0, 0, 0), "V. Balaguer");
-                            getLayer(2).draw(minecraftia, 62, 82, MapColorPalette.getColor(0, 0, 0), "Balaguer");
-                            getLayer(2).draw(minecraftia, 62, 99, MapColorPalette.getColor(0, 0, 0), "Gerb");
-                            getLayer(2).draw(minecraftia, 127, 63, MapColorPalette.getColor(0, 0, 0), "S.L. Montgai");
-                            getLayer(2).draw(minecraftia, 127, 82, MapColorPalette.getColor(0, 0, 0), "G. de Tremp");
-                            getLayer(2).draw(minecraftia, 127, 99, MapColorPalette.getColor(0, 0, 0), "P. de Noguera");
-                            getLayer(2).draw(minecraftia, 192, 63, MapColorPalette.getColor(0, 0, 0), "Tremp");
-                            getLayer(2).draw(minecraftia, 192, 82, MapColorPalette.getColor(0, 0, 0), "Talarn");
-                            getLayer(2).draw(minecraftia, 192, 99, MapColorPalette.getColor(0, 0, 0), "Salàs");
-                        } else {
-                            getLayer(2).clear();
-                            getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Pobla de S.");
-                        }
-                    }
 
-                    else if (Objects.equals(liniatren, "RL2B")) {
-                        if (!seguentPagina) {
-                            getLayer(2).clear();
-                            getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Pobla de S.");
-                            getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "Salàs");
-                            getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "Talarn");
-                            getLayer(2).draw(minecraftia, 62, 63, MapColorPalette.getColor(0, 0, 0), "Tremp");
-                            getLayer(2).draw(minecraftia, 62, 82, MapColorPalette.getColor(0, 0, 0), "P. de Noguera");
-                            getLayer(2).draw(minecraftia, 62, 99, MapColorPalette.getColor(0, 0, 0), "G. de Tremp");
-                            getLayer(2).draw(minecraftia, 127, 63, MapColorPalette.getColor(0, 0, 0), "S.L. Montgai");
-                            getLayer(2).draw(minecraftia, 127, 82, MapColorPalette.getColor(0, 0, 0), "Gerb");
-                            getLayer(2).draw(minecraftia, 127, 99, MapColorPalette.getColor(0, 0, 0), "Balaguer");
-                            getLayer(2).draw(minecraftia, 192, 63, MapColorPalette.getColor(0, 0, 0), "V. Balaguer");
-                            getLayer(2).draw(minecraftia, 192, 82, MapColorPalette.getColor(0, 0, 0), "Térmens");
-                            getLayer(2).draw(minecraftia, 192, 99, MapColorPalette.getColor(0, 0, 0), "Alcoletge");
-                        } else {
-                            getLayer(2).clear();
-                            getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Lleida");
-                        }
-                    }
+                    getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Pobla de S.");
+                    getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "Salàs");
+                    getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "Talarn");
+                    getLayer(2).draw(minecraftia, 62, 63, MapColorPalette.getColor(0, 0, 0), "Tremp");
+                    getLayer(2).draw(minecraftia, 62, 82, MapColorPalette.getColor(0, 0, 0), "P. de Noguera");
+                    getLayer(2).draw(minecraftia, 62, 99, MapColorPalette.getColor(0, 0, 0), "G. de Tremp");
+                    getLayer(2).draw(minecraftia, 127, 63, MapColorPalette.getColor(0, 0, 0), "S.L. Montgai");
+                    getLayer(2).draw(minecraftia, 127, 82, MapColorPalette.getColor(0, 0, 0), "Gerb");
+                    getLayer(2).draw(minecraftia, 127, 99, MapColorPalette.getColor(0, 0, 0), "Balaguer");
+                    getLayer(2).draw(minecraftia, 192, 63, MapColorPalette.getColor(0, 0, 0), "V. Balaguer");
+                    getLayer(2).draw(minecraftia, 192, 82, MapColorPalette.getColor(0, 0, 0), "Térmens");
+                    getLayer(2).draw(minecraftia, 192, 99, MapColorPalette.getColor(0, 0, 0), "Alcoletge");
+                    getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Lleida");
 
-                    else if (Objects.equals(liniatren, "L6A")) {
+                    if (Objects.equals(liniatren, "L6A")) {
                         getLayer(2).draw(minecraftia, 8, 63, MapColorPalette.getColor(0, 0, 0), "Pl. Cat.");
                         getLayer(2).draw(minecraftia, 8, 82, MapColorPalette.getColor(0, 0, 0), "Provença");
                         getLayer(2).draw(minecraftia, 8, 99, MapColorPalette.getColor(0, 0, 0), "Sarrià");
