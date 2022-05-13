@@ -287,7 +287,7 @@ public class ManualDisplays {
             //layer4: time (updated every tick)
 
             LocalTime tempsActual = LocalTime.parse(LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm")));
-            boolean fiDeServei = false; //(tempsActual.isAfter(LocalTime.parse("01:29")) && tempsActual.isBefore(LocalTime.parse("04:58")));
+            boolean fiDeServei = (tempsActual.isAfter(LocalTime.parse("01:29")) && tempsActual.isBefore(LocalTime.parse("04:58")));
 
             if (!fiDeServei) {
                 if (hasFGCTrain && !senseParada) {
@@ -1612,4 +1612,25 @@ public class ManualDisplays {
         }
     }
 
+    public static class ManualDisplay9 extends ManualDisplay{
+
+        @Override
+        public void onAttached(){
+            super.onAttached();
+        }
+        @Override
+        public boolean updateInformation(String displayID, String via, MinecartGroup dadesTren, Integer clearIn) {
+            return false;
+        }
+
+        @Override
+        public void onTick(){
+            super.onTick();
+        }
+
+        @Override
+        public boolean clearInformation(String displayID) {
+            return false;
+        }
+    }
 }

@@ -111,6 +111,7 @@ public class TrensMinecat extends JavaPlugin {
         SignAction.register(new SignActionClearDisplay());
         SignAction.register(new SignActionSenseParada());
         SignAction.register(new SignActionHorn());
+        SignAction.register(new SignActionChime());
         SignAction.register(new SignActionAudio(), true);
         SignAction.register(new SignActionUpdateService());
 
@@ -249,6 +250,14 @@ public class TrensMinecat extends JavaPlugin {
                     return true;
                 }
                 SignActionHorn.playSound(group);
+                return true;
+            }else if(args.length == 1 && args[0].equalsIgnoreCase("chime")){
+                MinecartGroup group = CartProperties.getEditing( (Player) sender).getGroup();
+                if (group == null) {
+                    sender.sendMessage(ChatColor.RED + "No estàs editant cap tren!");
+                    return true;
+                }
+                SignActionChime.playSound(group);
                 return true;
             }else if(args[0].equalsIgnoreCase("configurar") && args.length >= 2){
                 ItemStack heldItem = ((Player) sender).getInventory().getItemInMainHand();
@@ -527,6 +536,7 @@ public class TrensMinecat extends JavaPlugin {
         SignAction.unregister(new SignActionClearDisplay());
         SignAction.unregister(new SignActionSenseParada());
         SignAction.unregister(new SignActionHorn());
+        SignAction.unregister(new SignActionChime());
         SignAction.unregister(new SignActionAudio());
         SignAction.unregister(new SignActionUpdateService());
     }
