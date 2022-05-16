@@ -224,6 +224,40 @@ public class TrensMinecat extends JavaPlugin {
                         ItemUtil.getMetaTag(display).putValue("ID", args[3]);
                         ((Player) sender).getInventory().addItem(display);
                         return true;
+                    }else if(args[2].equalsIgnoreCase("9")){
+                        sender.sendMessage(ChatColor.AQUA + "Aquest display conté uns quants subtipus\n" +
+                                "Si us plau, especifiqui el tipus:\n" +
+                                "9A: L8/S3/S4/S8/R5/R6 Múltiples direccions (dreta)\n" +
+                                "9B: L8/S3/S4/S8/R5/R6 a Barcelona (dreta)\n" +
+                                "9C: S3/S4/S8/R5/R6 Múltiples direccions (dreta)\n" +
+                                "9D: S3/S4/S8/R5/R6 a Barcelona (dreta)\n" +
+                                "9E: S3/R6 Múltiples direccions (dreta)\n" +
+                                "9F: S3/R6 a Barcelona (dreta)\n" +
+                                "9G: R6 a Igualada (dreta)\n" +
+                                "9H: R6 a Barcelona (dreta)\n" +
+                                "9I: S4/R5 Múltiples direccions (dreta)\n" +
+                                "9J: S4/R5 a Barcelona (dreta)\n" +
+                                "9K: R5 a Manresa (dreta)\n" +
+                                "9L: R5 a Barcelona (dreta)\n" +
+                                "(La versio en esquerra es el ID 10)");
+                        return true;
+                    }else if(args[2].equalsIgnoreCase("10")){
+                        sender.sendMessage(ChatColor.AQUA + "Aquest display conté uns quants subtipus\n" +
+                                "Si us plau, especifiqui el tipus:\n" +
+                                "10: L8/S3/S4/S8/R5/R6 Múltiples direccions (esquerra)\n" +
+                                "10: L8/S3/S4/S8/R5/R6 a Barcelona (esquerra)\n" +
+                                "10: S3/S4/S8/R5/R6 Múltiples direccions (esquerra)\n" +
+                                "10: S3/S4/S8/R5/R6 a Barcelona (esquerra)\n" +
+                                "10: S3/R6 Múltiples direccions (esquerra)\n" +
+                                "10: S3/R6 a Barcelona (esquerra)\n" +
+                                "10: R6 a Igualada (esquerra)\n" +
+                                "10: R6 a Barcelona (esquerra)\n" +
+                                "10: S4/R5 Múltiples direccions (esquerra)\n" +
+                                "10: S4/R5 a Barcelona (esquerra)\n" +
+                                "10: R5 a Manresa (esquerra)\n" +
+                                "10: R5 a Barcelona (esquerra)\n" +
+                                "(La versio en dreta es el ID 9)");
+                        return true;
                     }
                 }else if(args[1].equalsIgnoreCase("sldisplay") && args.length == 3){
                     ItemStack display;
