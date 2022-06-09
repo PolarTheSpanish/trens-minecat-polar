@@ -2,7 +2,6 @@ package io.github.janvinas.trensminecat;
 
 import com.bergerkiller.bukkit.common.BlockLocation;
 import com.bergerkiller.bukkit.common.map.MapDisplay;
-import com.bergerkiller.bukkit.common.map.MapTexture;
 import com.bergerkiller.bukkit.common.nbt.CommonTag;
 import com.bergerkiller.bukkit.common.utils.ItemUtil;
 import com.bergerkiller.bukkit.tc.TrainCarts;
@@ -109,11 +108,11 @@ public class TrensMinecat extends JavaPlugin {
 
         SignAction.register(new SignActionDisplayManual());
         SignAction.register(new SignActionClearDisplay());
-        SignAction.register(new SignActionSenseParada());
         SignAction.register(new SignActionHorn());
         SignAction.register(new SignActionChime());
         SignAction.register(new SignActionAudio(), true);
         SignAction.register(new SignActionUpdateService());
+        SignAction.register(new SignActionAnnouncement());
 
 
 
@@ -178,145 +177,150 @@ public class TrensMinecat extends JavaPlugin {
                     return true;
 
                 }else if(args[1].equalsIgnoreCase("displaymanual") && args.length == 4){
-                    if(args[2].equalsIgnoreCase("1")){
-                        ItemStack display = MapDisplay.createMapItem(ManualDisplays.ManualDisplay1.class);
-                        ItemUtil.getMetaTag(display).putValue("ID", args[3]);
-                        ((Player) sender).getInventory().addItem(display);
-                        return true;
-                    }else if(args[2].equalsIgnoreCase("3")){
-                        ItemStack display = MapDisplay.createMapItem(ManualDisplays.ManualDisplay3.class);
-                        ItemUtil.getMetaTag(display).putValue("ID", args[3]);
-                        ((Player) sender).getInventory().addItem(display);
-                        return true;
-                    }else if(args[2].equalsIgnoreCase("4")){
-                        ItemStack display = MapDisplay.createMapItem(ManualDisplays.ManualDisplay4.class);
-                        ItemUtil.getMetaTag(display).putValue("ID", args[3]);
-                        ItemUtil.getMetaTag(display).putValue("platform", "0");
-                        ((Player) sender).getInventory().addItem(display);
-                        return true;
-                    }else if(args[2].equalsIgnoreCase("5")){
-                        ItemStack display = MapDisplay.createMapItem(ManualDisplays.ManualDisplay5.class);
-                        ItemUtil.getMetaTag(display).putValue("ID", args[3]);
-                        ItemUtil.getMetaTag(display).putValue("platform", "0");
-                        ((Player) sender).getInventory().addItem(display);
-                        return true;
-                    }else if(args[2].equalsIgnoreCase("6")){
-                        ItemStack display = MapDisplay.createMapItem(ManualDisplays.ManualDisplay6.class);
-                        ItemUtil.getMetaTag(display).putValue("ID", args[3]);
-                        ((Player) sender).getInventory().addItem(display);
-                        return true;
-                    }else if(args[2].equalsIgnoreCase("7")){
-                        ItemStack display = MapDisplay.createMapItem(ManualDisplays.ManualDisplay7.class);
-                        ItemUtil.getMetaTag(display).putValue("ID", args[3]);
-                        ((Player) sender).getInventory().addItem(display);
-                        return true;
-                    }else if(args[2].equalsIgnoreCase("8")){
-                        sender.sendMessage(ChatColor.AQUA + "Aquest display conté dos subtipus\n" +
-                                                                   "Si us plau, especifiqui el tipus (8A o 8B)");
-                        return true;
-                    }else if(args[2].equalsIgnoreCase("8A")){
-                        ItemStack display = MapDisplay.createMapItem(ManualDisplays.ManualDisplay8A.class);
-                        ItemUtil.getMetaTag(display).putValue("ID", args[3]);
-                        ((Player) sender).getInventory().addItem(display);
-                        return true;
-                    }else if(args[2].equalsIgnoreCase("8B")) {
-                        ItemStack display = MapDisplay.createMapItem(ManualDisplays.ManualDisplay8B.class);
-                        ItemUtil.getMetaTag(display).putValue("ID", args[3]);
-                        ((Player) sender).getInventory().addItem(display);
-                        return true;
-                    }else if(args[2].equalsIgnoreCase("9")){
-                        sender.sendMessage(ChatColor.AQUA + "Aquest display conté uns quants subtipus\n" +
-                                "Si us plau, especifiqui el tipus:\n" +
-                                "9A: L8/S3/S4/S8/R5/R6 Múltiples direccions (dreta)\n" +
-                                "9B: L8/S3/S4/S8/R5/R6 a Barcelona (dreta)\n" +
-                                "9C: S3/S4/S8/R5/R6 Múltiples direccions (dreta)\n" +
-                                "9D: S3/S4/S8/R5/R6 a Barcelona (dreta)\n" +
-                                "9E: S3/R6 Múltiples direccions (dreta)\n" +
-                                "9F: S3/R6 a Barcelona (dreta)\n" +
-                                "9G: R6 a Igualada (dreta)\n" +
-                                "9H: R6 a Barcelona (dreta)\n" +
-                                "9I: S4/R5 Múltiples direccions (dreta)\n" +
-                                "9J: S4/R5 a Barcelona (dreta)\n" +
-                                "9K: R5 a Manresa (dreta)\n" +
-                                "9L: R5 a Barcelona (dreta)\n" +
-                                "(La versio en esquerra es el ID 10)");
-                        return true;
-                    }else if(args[2].equalsIgnoreCase("10")){
-                        sender.sendMessage(ChatColor.AQUA + "Aquest display conté uns quants subtipus\n" +
-                                "Si us plau, especifiqui el tipus:\n" +
-                                "10: L8/S3/S4/S8/R5/R6 Múltiples direccions (esquerra)\n" +
-                                "10: L8/S3/S4/S8/R5/R6 a Barcelona (esquerra)\n" +
-                                "10: S3/S4/S8/R5/R6 Múltiples direccions (esquerra)\n" +
-                                "10: S3/S4/S8/R5/R6 a Barcelona (esquerra)\n" +
-                                "10: S3/R6 Múltiples direccions (esquerra)\n" +
-                                "10: S3/R6 a Barcelona (esquerra)\n" +
-                                "10: R6 a Igualada (esquerra)\n" +
-                                "10: R6 a Barcelona (esquerra)\n" +
-                                "10: S4/R5 Múltiples direccions (esquerra)\n" +
-                                "10: S4/R5 a Barcelona (esquerra)\n" +
-                                "10: R5 a Manresa (esquerra)\n" +
-                                "10: R5 a Barcelona (esquerra)\n" +
-                                "(La versio en dreta es el ID 9)");
-                        return true;
-                    }
-                }else if(args[1].equalsIgnoreCase("sldisplay") && args.length == 3){
-                    ItemStack display;
-                    if(args[2].equalsIgnoreCase("1")){
-                        display = MapDisplay.createMapItem(SignLinkDisplays.SignLinkDisplay1.class);
-                        ((Player) sender).getInventory().addItem(display);
-                        return true;
-                    }
-                }else if(args[1].equalsIgnoreCase("estatdelservei") && args.length == 2){
+                    if (!sender.getName().equalsIgnoreCase("CONSOLE")) {
+                        if (args[2].equalsIgnoreCase("1")) {
+                            ItemStack display = MapDisplay.createMapItem(ManualDisplays.ManualDisplay1.class);
+                            ItemUtil.getMetaTag(display).putValue("ID", args[3]);
+                            ((Player) sender).getInventory().addItem(display);
+                            return true;
+                        } else if (args[2].equalsIgnoreCase("3")) {
+                            ItemStack display = MapDisplay.createMapItem(ManualDisplays.ManualDisplay3.class);
+                            ItemUtil.getMetaTag(display).putValue("ID", args[3]);
+                            ((Player) sender).getInventory().addItem(display);
+                            return true;
+                        } else if (args[2].equalsIgnoreCase("4")) {
+                            ItemStack display = MapDisplay.createMapItem(ManualDisplays.ManualDisplay4.class);
+                            ItemUtil.getMetaTag(display).putValue("ID", args[3]);
+                            ItemUtil.getMetaTag(display).putValue("platform", "0");
+                            ((Player) sender).getInventory().addItem(display);
+                            return true;
+                        } else if (args[2].equalsIgnoreCase("5")) {
+                            ItemStack display = MapDisplay.createMapItem(ManualDisplays.ManualDisplay5.class);
+                            ItemUtil.getMetaTag(display).putValue("ID", args[3]);
+                            ItemUtil.getMetaTag(display).putValue("platform", "0");
+                            ((Player) sender).getInventory().addItem(display);
+                            return true;
+                        } else if (args[2].equalsIgnoreCase("6")) {
+                            ItemStack display = MapDisplay.createMapItem(ManualDisplays.ManualDisplay6.class);
+                            ItemUtil.getMetaTag(display).putValue("ID", args[3]);
+                            ((Player) sender).getInventory().addItem(display);
+                            return true;
+                        } else if (args[2].equalsIgnoreCase("7")) {
+                            ItemStack display = MapDisplay.createMapItem(ManualDisplays.ManualDisplay7.class);
+                            ItemUtil.getMetaTag(display).putValue("ID", args[3]);
+                            ((Player) sender).getInventory().addItem(display);
+                            return true;
+                        } else if (args[2].equalsIgnoreCase("8")) {
+                            sender.sendMessage(ChatColor.AQUA + "Aquest display conté dos subtipus\n" +
+                                    "Si us plau, especifiqui el tipus (8A o 8B)");
+                            return true;
+                        } else if (args[2].equalsIgnoreCase("8A")) {
+                            ItemStack display = MapDisplay.createMapItem(ManualDisplays.ManualDisplay8A.class);
+                            ItemUtil.getMetaTag(display).putValue("ID", args[3]);
+                            ((Player) sender).getInventory().addItem(display);
+                            return true;
+                        } else if (args[2].equalsIgnoreCase("8B")) {
+                            ItemStack display = MapDisplay.createMapItem(ManualDisplays.ManualDisplay8B.class);
+                            ItemUtil.getMetaTag(display).putValue("ID", args[3]);
+                            ((Player) sender).getInventory().addItem(display);
+                            return true;
+                        } else if (args[2].equalsIgnoreCase("9")) {
+                            sender.sendMessage(ChatColor.AQUA + "Aquest display conté uns quants subtipus\n" +
+                                    "Si us plau, especifiqui el tipus:\n" +
+                                    "(Linies amb múltiples direccions)\n" +
+                                    "9A: Display dret\n" +
+                                    "9B: Display esquerra");
+                            return true;
+                        } else if (args[2].equalsIgnoreCase("9A")) {
+                            ItemStack display = MapDisplay.createMapItem(ManualDisplays.ManualDisplay9A.class);
+                            ItemUtil.getMetaTag(display).putValue("ID", args[3]);
+                            ((Player) sender).getInventory().addItem(display);
+                            return true;
+                        } else if (args[2].equalsIgnoreCase("10")) {
+                            sender.sendMessage(ChatColor.AQUA + "Aquest display conté uns quants subtipus\n" +
+                                    "Si us plau, especifiqui el tipus:\n" +
+                                    "(Linies a direcció Barcelona)\n" +
+                                    "10A: Display dret\n" +
+                                    "10B: Display esquerra");
+                            return true;
+                        }
+                    } else sender.sendMessage(ChatColor.RED + "Aquesta comanda només pot ser executat per un usuari i no per consola");
+                }
+
+                else if(args[1].equalsIgnoreCase("sldisplay") && args.length == 3){
+                    if (!sender.getName().equalsIgnoreCase("CONSOLE")) {
+                        ItemStack display;
+                        if (args[2].equalsIgnoreCase("1")) {
+                            display = MapDisplay.createMapItem(SignLinkDisplays.SignLinkDisplay1.class);
+                            ((Player) sender).getInventory().addItem(display);
+                            return true;
+                        }
+                    } else sender.sendMessage(ChatColor.RED + "Aquesta comanda només pot ser executat per un usuari i no per consola");
+                }
+
+                else if(args[1].equalsIgnoreCase("estatdelservei") && args.length == 2){
                     ItemStack display = MapDisplay.createMapItem(ServiceStatusDisplay.class);
                     ((Player) sender).getInventory().addItem(display);
-
                     return true;
                 }
-            }else if(args.length == 1 && args[0].equalsIgnoreCase("recarregar")){
+            }
+
+            else if(args.length == 1 && args[0].equalsIgnoreCase("recarregar")){ //AIXÓ POT EXECUTAR LA CONSOLE
                 sender.sendMessage(ChatColor.GOLD + "AVÍS PELS QUE UTILITZEU PAPERMC: " + ChatColor.AQUA + "Si surt per consola un thread dump, ignoreu-lo. A vegades el plugin pot tardar una mica en recàrregar.");
                 loadMainConfiguration();
                 sender.sendMessage(ChatColor.AQUA + "Configuració regarregada!");
                 return true;
-            }else if(args.length == 1 && args[0].equalsIgnoreCase("horn")){
-                MinecartGroup group = CartProperties.getEditing( (Player) sender).getGroup();
-                if (group == null) {
-                    sender.sendMessage(ChatColor.RED + "No estàs editant cap tren!");
-                    return true;
-                }
-                SignActionHorn.playSound(group);
-                return true;
-            }else if(args.length == 1 && args[0].equalsIgnoreCase("chime")){
-                MinecartGroup group = CartProperties.getEditing( (Player) sender).getGroup();
-                if (group == null) {
-                    sender.sendMessage(ChatColor.RED + "No estàs editant cap tren!");
-                    return true;
-                }
-                SignActionChime.playSound(group);
-                return true;
-            }else if(args[0].equalsIgnoreCase("configurar") && args.length >= 2){
-                ItemStack heldItem = ((Player) sender).getInventory().getItemInMainHand();
-                if(args[1].equalsIgnoreCase("displaymanual")){
+            }
 
-                    if(!heldItem.getType().equals(Material.FILLED_MAP)){
-                        sender.sendMessage(ChatColor.RED + "Agafa el mapa amb la mà dreta per configurar-lo");
+            else if(args.length == 1 && args[0].equalsIgnoreCase("horn")){
+                if (!sender.getName().equalsIgnoreCase("CONSOLE")) {
+                    MinecartGroup group = CartProperties.getEditing((Player) sender).getGroup();
+                    if (group == null) {
+                        sender.sendMessage(ChatColor.RED + "No estàs editant cap tren!");
                         return true;
                     }
+                    SignActionHorn.playSound(group);
+                    return true;
+                } else sender.sendMessage(ChatColor.RED + "Aquesta comanda només pot ser executat per un usuari i no per consola");
+            }
 
-                    MapDisplay mapDisplay = MapDisplay.getHeldDisplay((Player) sender);
-                    if(mapDisplay == null){
-                        sender.sendMessage(ChatColor.RED + "No hi ha cap pantalla vinculada a aquest mapa!");
+            else if(args.length == 1 && args[0].equalsIgnoreCase("chime")){
+                if (!sender.getName().equalsIgnoreCase("CONSOLE")) {
+                    MinecartGroup group = CartProperties.getEditing((Player) sender).getGroup();
+                    if (group == null) {
+                        sender.sendMessage(ChatColor.RED + "No estàs editant cap tren!");
                         return true;
                     }
+                    SignActionChime.playSound(group);
+                    return true;
+                } else sender.sendMessage(ChatColor.RED + "Aquesta comanda només pot ser executat per un usuari i no per consola");
+            }
 
-                    if(args.length == 4 && args[2].equalsIgnoreCase("andana")) {
-                        if (args[3].equalsIgnoreCase("reset")) {
-                            mapDisplay.properties.set("platform", "");
-                            sender.sendMessage(ChatColor.AQUA + "S'ha reiniciat el número d'andana.");
-                        } else {
-                            mapDisplay.properties.set("platform", args[3]);
-                            sender.sendMessage(ChatColor.AQUA + "S'ha configurat \"andana\" = " + args[3]);
+            else if(args[0].equalsIgnoreCase("configurar") && args.length >= 2){
+                if (!sender.getName().equalsIgnoreCase("CONSOLE")) {
+                    ItemStack heldItem = ((Player) sender).getInventory().getItemInMainHand();
+                    if (args[1].equalsIgnoreCase("displaymanual")) {
+
+                        if (!heldItem.getType().equals(Material.FILLED_MAP)) {
+                            sender.sendMessage(ChatColor.RED + "Agafa el mapa amb la mà dreta per configurar-lo");
+                            return true;
                         }
-                    }
+
+                        MapDisplay mapDisplay = MapDisplay.getHeldDisplay((Player) sender);
+                        if (mapDisplay == null) {
+                            sender.sendMessage(ChatColor.RED + "No hi ha cap pantalla vinculada a aquest mapa!");
+                            return true;
+                        }
+
+                        if (args.length == 4 && args[2].equalsIgnoreCase("andana")) {
+                            if (args[3].equalsIgnoreCase("reset")) {
+                                mapDisplay.properties.set("platform", "");
+                                sender.sendMessage(ChatColor.AQUA + "S'ha reiniciat el número d'andana.");
+                            } else {
+                                mapDisplay.properties.set("platform", args[3]);
+                                sender.sendMessage(ChatColor.AQUA + "S'ha configurat \"andana\" = " + args[3]);
+                            }
+                        }
 //                    if(args.length == 4 && args[2].equalsIgnoreCase("idioma")){
 //                        if(args[3].equalsIgnoreCase("catala") || args[3].equalsIgnoreCase("reinicia")){
 //                            mapDisplay.properties.set("background", MapTexture.loadPluginResource(JavaPlugin.getPlugin(TrensMinecat.class), "img/ManualDisplay4.png"));
@@ -328,51 +332,72 @@ public class TrensMinecat extends JavaPlugin {
 //                            sender.sendMessage(ChatColor.AQUA + "Especifiqui el llenguatge (catala/castella)");
 //                        }
 //                    }
-                    else if(args.length == 4 && args[2].equalsIgnoreCase("marca")) {
-                        mapDisplay.properties.set("brand", args[3]);
-                        sender.sendMessage(ChatColor.AQUA + "S'ha configurat \"marca\" = " + args[3]);
-                    }else if(args.length == 4 && args[2].equalsIgnoreCase("plantilla")) {
-                        mapDisplay.properties.set("template", args[3].replaceAll("_", " "));
-                        sender.sendMessage(ChatColor.AQUA + "S'ha configurat \"plantilla\" = " + args[3]);
-                    }else{
-                        sender.sendMessage(ChatColor.AQUA + "Propietat desconeguda o argument incorrecte");
-                    }
+                        else if (args.length == 4 && args[2].equalsIgnoreCase("marca")) {
+                            mapDisplay.properties.set("brand", args[3]);
+                            sender.sendMessage(ChatColor.AQUA + "S'ha configurat \"marca\" = " + args[3]);
+                        } else if (args.length == 4 && args[2].equalsIgnoreCase("plantilla")) {
+                            mapDisplay.properties.set("template", args[3].replaceAll("_", " "));
+                            sender.sendMessage(ChatColor.AQUA + "S'ha configurat \"plantilla\" = " + args[3]);
+                        } else if (args.length == 4 && args[2].equalsIgnoreCase("ocultar")) {
+                            if (args[3].equalsIgnoreCase("L8") || args[3].equalsIgnoreCase("S3") || args[3].equalsIgnoreCase("S4") || args[3].equalsIgnoreCase("S8") || args[3].equalsIgnoreCase("R5") || args[3].equalsIgnoreCase("R6")) {
+                                mapDisplay.properties.set("ocultar", args[3]);
+                                sender.sendMessage(ChatColor.AQUA + "S'ha ocultat del display la linia " + args[3]);
+                                sender.sendMessage(ChatColor.DARK_AQUA + "(Aquest canvis s'aplicarán quan el display s'actualitzi)");
+                            } else if (args[3].equalsIgnoreCase("restart") || args[3].equalsIgnoreCase("reinicia") || args[3].equalsIgnoreCase("reiniciar")) {
+                                mapDisplay.properties.set("ocultar", "unhidden");
+                                sender.sendMessage(ChatColor.AQUA + "S'han tornat a mostrar totes les linies d'aquest display.");
+                                sender.sendMessage(ChatColor.DARK_AQUA + "(Aquest canvis s'aplicarán quan el display s'actualitzi)");
+                            } else {
+                                sender.sendMessage(ChatColor.RED + "Argument no válid, has de triar una de les següents opcions: L8 / S3 / S4 / S8 / R5 i R6. Per reiniciar el display, posa d'argument \"restart\"" + args[3]);
+                            }
+                        } else {
+                            sender.sendMessage(ChatColor.AQUA + "Propietat desconeguda o argument incorrecte");
+                        }
 
-                    mapDisplay.restartDisplay();
-                    return true;
-                }else if(args[1].equalsIgnoreCase("sldisplay")){
-                    if(!heldItem.getType().equals(Material.FILLED_MAP)){
-                        sender.sendMessage(ChatColor.RED + "Agafa el mapa amb la mà dreta per configurar-lo");
+                        mapDisplay.restartDisplay();
                         return true;
-                    }
-                    MapDisplay mapDisplay = MapDisplay.getHeldDisplay((Player) sender);
-                    if(mapDisplay == null){
-                        sender.sendMessage(ChatColor.RED + "No hi ha cap pantalla vinculada a aquest mapa!");
-                        return true;
-                    }
-
-                    if(args.length == 4 && args[2].equalsIgnoreCase("destinacio")){
-                        mapDisplay.properties.set("destination", args[3].replaceAll("_"," "));
-                        sender.sendMessage(ChatColor.AQUA + "S'ha configurat \"destinació\" = " + args[3]);
-                    }else if(args.length == 4 && args[2].equalsIgnoreCase("variable")){
-                        mapDisplay.properties.set("variable", args[3].replaceAll("_", " "));
-                        sender.sendMessage(ChatColor.AQUA + "S'ha configurat \"variable\" = " + args[3]);
-                    }else{
-                        sender.sendMessage("Propietat desconeguda o argument incorrecte");
-                    }
-
-                    mapDisplay.restartDisplay();
-                    return true;
+                    } else sender.sendMessage(ChatColor.RED + "Aquesta comanda només pot ser executat per un usuari i no per consola");
                 }
 
-            }else if(args.length == 1 && args[0].equalsIgnoreCase("actualitzarestat")){
+                else if(args[1].equalsIgnoreCase("sldisplay")){
+                    if (!sender.getName().equalsIgnoreCase("CONSOLE")) {
+                        ItemStack heldItem = ((Player) sender).getInventory().getItemInMainHand();
+                        if (!heldItem.getType().equals(Material.FILLED_MAP)) {
+                            sender.sendMessage(ChatColor.RED + "Agafa el mapa amb la mà dreta per configurar-lo");
+                            return true;
+                        }
+                        MapDisplay mapDisplay = MapDisplay.getHeldDisplay((Player) sender);
+                        if (mapDisplay == null) {
+                            sender.sendMessage(ChatColor.RED + "No hi ha cap pantalla vinculada a aquest mapa!");
+                            return true;
+                        }
+
+                        if (args.length == 4 && args[2].equalsIgnoreCase("destinacio")) {
+                            mapDisplay.properties.set("destination", args[3].replaceAll("_", " "));
+                            sender.sendMessage(ChatColor.AQUA + "S'ha configurat \"destinació\" = " + args[3]);
+                        } else if (args.length == 4 && args[2].equalsIgnoreCase("variable")) {
+                            mapDisplay.properties.set("variable", args[3].replaceAll("_", " "));
+                            sender.sendMessage(ChatColor.AQUA + "S'ha configurat \"variable\" = " + args[3]);
+                        } else {
+                            sender.sendMessage("Propietat desconeguda o argument incorrecte");
+                        }
+
+                        mapDisplay.restartDisplay();
+                        return true;
+                    } else sender.sendMessage(ChatColor.RED + "Aquesta comanda només pot ser executat per un usuari i no per consola");
+                }
+
+            }else if(args.length == 1 && args[0].equalsIgnoreCase("actualitzarestat")){ //AIXÓ POT EXECUTAR LA CONSOLA
                 MapDisplay.getAllDisplays(ServiceStatusDisplay.class).forEach(ServiceStatusDisplay::updateDisplay);
+                sender.sendMessage(ChatColor.AQUA + "Displays d'estat del servei actualitzats correctament!");
                 return true;
 
-            }else if(args.length == 1 && args[0].equalsIgnoreCase("info")){
+            }else if(args.length == 1 && args[0].equalsIgnoreCase("info")){ //AIXÓ POT EXECUTAR LA CONSOLA
                 sender.sendMessage("TrensMinecat versió " + getDescription().getVersion() + ". programat per janitus1234 (janitus1234@gmail.com)");
                 return true;
-            }else if(args[0].equalsIgnoreCase("spawntrain")){
+            }
+
+            else if(args[0].equalsIgnoreCase("spawntrain")){ //AIXÓ POT EXECUTAR LA CONSOLA
                 CommandLine commandLine = new CommandLine(new SpawnTrainCommand());
                 commandLine.setUnmatchedOptionsArePositionalParams(true);
                 int returnCode = commandLine.execute(args);
@@ -380,51 +405,68 @@ public class TrensMinecat extends JavaPlugin {
                     sender.sendMessage(ChatColor.RED + "Error parsing command. For more information see console.");
                 }
                 return true;
-            }else if(args.length == 1 && args[0].equalsIgnoreCase("gettrains")){
-                sender.sendMessage(trainTracker.getTrackedTrains().toString());
-                return true;
-            }else if(args.length == 1 && args[0].equalsIgnoreCase("cleartrainregister")){
-                trainTracker.clearTrainRegister();
-                return true;
-            }else if(args.length == 1 && args[0].equalsIgnoreCase("traininfo")){
-                MinecartGroup group = CartProperties.getEditing( (Player) sender).getGroup();
-                if(group == null){
-                    sender.sendMessage(ChatColor.RED + "No estàs editant cap tren!");
+            }
+
+            else if(args.length == 1 && args[0].equalsIgnoreCase("gettrains")){
+                if (!sender.getName().equalsIgnoreCase("CONSOLE")) {
+                    sender.sendMessage(trainTracker.getTrackedTrains().toString());
                     return true;
-                }
-                TrackedTrain trackedTrain = trainTracker.searchTrain(group);
-                if(trackedTrain == null){
-                    sender.sendMessage("Aquest tren no està registrat!");
+                } else sender.sendMessage(ChatColor.RED + "Aquesta comanda només pot ser executat per un usuari i no per consola");
+            }
+
+            else if(args.length == 1 && args[0].equalsIgnoreCase("cleartrainregister")){
+                if (!sender.getName().equalsIgnoreCase("CONSOLE")) {
+                    trainTracker.clearTrainRegister();
                     return true;
-                }
+                } else sender.sendMessage(ChatColor.RED + "Aquesta comanda només pot ser executat per un usuari i no per consola");
+            }
 
-                //imprimeix la informació del tren
-                sender.sendMessage(ChatColor.AQUA + "S'està editant el tren: " + trackedTrain.trainName);
-                sender.sendMessage(ChatColor.AQUA + "Hora de sortida: " + trackedTrain.departureTime);
-                sender.sendMessage(ChatColor.AQUA + "Línia i destinació " + trackedTrain.linedest);
-                sender.sendMessage(ChatColor.AQUA + "Retard: " + trackedTrain.delay.toSeconds() + " segons");
-                sender.sendMessage(ChatColor.AQUA + "" + ChatColor.UNDERLINE + "Pròximes estacions" + ChatColor.RESET + "" + ChatColor.AQUA + " (Nom, hora d'arribada programada, hora d'arribada prevista)");
-                for (TrackedStation station : trackedTrain.nextStations) {
-                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-                    LocalDateTime arrivalTime = trackedTrain.departureTime.plus(station.timeFromSpawn);
-                    LocalDateTime realArrivalTime = arrivalTime.plus(trackedTrain.delay);
-                    sender.sendMessage(ChatColor.AQUA + " - " + station.stationCode + ", " + arrivalTime.format(formatter) + ", " + realArrivalTime.format(formatter));
-                }
+            else if(args.length == 1 && args[0].equalsIgnoreCase("traininfo")){
+                if (!sender.getName().equalsIgnoreCase("CONSOLE")) {
+                    MinecartGroup group = CartProperties.getEditing((Player) sender).getGroup();
+                    if (group == null) {
+                        sender.sendMessage(ChatColor.RED + "No estàs editant cap tren!");
+                        return true;
+                    }
+                    TrackedTrain trackedTrain = trainTracker.searchTrain(group);
+                    if (trackedTrain == null) {
+                        sender.sendMessage("Aquest tren no està registrat!");
+                        return true;
+                    }
 
-                return true;
-            }else if(args.length == 1 && args[0].equalsIgnoreCase("iteminfo")){
+                    //imprimeix la informació del tren
+                    sender.sendMessage(ChatColor.AQUA + "S'està editant el tren: " + trackedTrain.trainName);
+                    sender.sendMessage(ChatColor.AQUA + "Hora de sortida: " + trackedTrain.departureTime);
+                    sender.sendMessage(ChatColor.AQUA + "Línia i destinació " + trackedTrain.linedest);
+                    sender.sendMessage(ChatColor.AQUA + "Retard: " + trackedTrain.delay.toSeconds() + " segons");
+                    sender.sendMessage(ChatColor.AQUA + "" + ChatColor.UNDERLINE + "Pròximes estacions" + ChatColor.RESET + "" + ChatColor.AQUA + " (Nom, hora d'arribada programada, hora d'arribada prevista)");
+                    for (TrackedStation station : trackedTrain.nextStations) {
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+                        LocalDateTime arrivalTime = trackedTrain.departureTime.plus(station.timeFromSpawn);
+                        LocalDateTime realArrivalTime = arrivalTime.plus(trackedTrain.delay);
+                        sender.sendMessage(ChatColor.AQUA + " - " + station.stationCode + ", " + arrivalTime.format(formatter) + ", " + realArrivalTime.format(formatter));
+                    }
 
-                try{
-                    ItemStack heldItem = ((Player) sender).getInventory().getItemInMainHand();
-                    Map<String, CommonTag> data = ItemUtil.getMetaTag(heldItem).getData();
-                    sender.sendMessage(ChatColor.AQUA + "" + ChatColor.UNDERLINE + "iteminfo");
-                    data.forEach((key, value) ->
-                            sender.sendMessage(ChatColor.AQUA + key + ChatColor.RESET + " = " + ChatColor.GRAY + value.toString()) );
-                }catch(Exception e){
-                    sender.sendMessage(ChatColor.RED + "Error obtenint la informació!");
-                }
-                return true;
-            }else if(args.length == 4 && args[0].equalsIgnoreCase("justificant")){
+                    return true;
+                } else sender.sendMessage(ChatColor.RED + "Aquesta comanda només pot ser executat per un usuari i no per consola");
+            }
+
+            else if(args.length == 1 && args[0].equalsIgnoreCase("iteminfo")){
+                if (!sender.getName().equalsIgnoreCase("CONSOLE")) {
+                    try {
+                        ItemStack heldItem = ((Player) sender).getInventory().getItemInMainHand();
+                        Map<String, CommonTag> data = ItemUtil.getMetaTag(heldItem).getData();
+                        sender.sendMessage(ChatColor.AQUA + "" + ChatColor.UNDERLINE + "iteminfo");
+                        data.forEach((key, value) ->
+                                sender.sendMessage(ChatColor.AQUA + key + ChatColor.RESET + " = " + ChatColor.GRAY + value.toString()));
+                    } catch (Exception e) {
+                        sender.sendMessage(ChatColor.RED + "Error obtenint la informació!");
+                    }
+                    return true;
+                } else sender.sendMessage(ChatColor.RED + "Aquesta comanda només pot ser executat per un usuari i no per consola");
+            }
+
+            else if(args.length == 4 && args[0].equalsIgnoreCase("justificant")){ //Aquesta comanda pot executar CONSOLE
                 String playerName = args[1];
                 String nomBitllet = args[2];
                 String quantitatBitllets = args[3];
@@ -447,7 +489,7 @@ public class TrensMinecat extends JavaPlugin {
                         assert meta != null;
                         meta.setTitle("Rebut / Recibo / Receipt");
                         meta.setAuthor("MineCat Trànsit");
-                        List<String> pages = new ArrayList<String>();
+                        List<String> pages = new ArrayList<>();
                         pages.add("Usuari §l" + playerName + "§r ha comprat el/s bitllet/s " + nomBitllet + " (x" + quantitatBitllets + ") " + "a les " + dtf.format(now) + "\n\n§o§4No llençi aquest llibre fins que acabi el viatge. Aquest llibre serveix de justificant de pagament.§r");
                         pages.add("Usuario §l" + playerName + "§r ha comprado el/los billete/s " + nomBitllet + " (x" + quantitatBitllets + ") " + "a las " + dtf.format(now) + "\n\n§o§4No tire este libro hasta que acabe el viaje. Este libro sirve como justificante de pago.§r");
                         pages.add("User §l" + playerName + "§r has bought ticket named " + nomBitllet + " (x" + quantitatBitllets + ") " + "at " + dtf.format(now) + "\n\n§o§4Do not throw this book until you end your trip. This book serves as a proof of payment.§r");
@@ -491,7 +533,8 @@ public class TrensMinecat extends JavaPlugin {
                             }else{
                                 if("andana".startsWith(args[2])) options.add("andana [número|reset]");
                                 if("marca".startsWith(args[2])) options.add("marca [marca]");
-                                if("idioma".startsWith(args[2])) options.add("idioma [catala/castella] (sense accents)");
+                                if("ocultar".startsWith(args[2])) options.add("ocultar [L8/S3/S4/S8/R5/R6/reinicia]");
+                                //if("idioma".startsWith(args[2])) options.add("idioma [catala/castella] (sense accents)");
                             }
 
                         }
@@ -568,10 +611,10 @@ public class TrensMinecat extends JavaPlugin {
 
         SignAction.unregister(new SignActionDisplayManual());
         SignAction.unregister(new SignActionClearDisplay());
-        SignAction.unregister(new SignActionSenseParada());
         SignAction.unregister(new SignActionHorn());
         SignAction.unregister(new SignActionChime());
         SignAction.unregister(new SignActionAudio());
+        SignAction.unregister(new SignActionAnnouncement());
         SignAction.unregister(new SignActionUpdateService());
     }
 

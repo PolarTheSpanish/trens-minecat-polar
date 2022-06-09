@@ -251,6 +251,7 @@ public class ManualDisplays {
     */
 
     public static class ManualDisplay3 extends ManualDisplay{ //pantalla fgc primer tren (2*1)
+        String codiParada;
         String liniatren = "";
         String plataforma = "0";
         String[] estacions;
@@ -273,7 +274,7 @@ public class ManualDisplays {
             super.onAttached();
             setUpdateWithoutViewers(false);
             getLayer(0).clear();
-            getLayer(0).draw(Assets.getMapTexture(imgDir + "ManualDisplay3A.png"), 0, 0);
+            getLayer(0).draw(Assets.getMapTexture(imgDir + "ManualDisplay3.png"), 0, 0);
         }
 
         @Override
@@ -287,7 +288,7 @@ public class ManualDisplays {
             //layer4: time (updated every tick)
 
             LocalTime tempsActual = LocalTime.parse(LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm")));
-            boolean fiDeServei = (tempsActual.isAfter(LocalTime.parse("01:29")) && tempsActual.isBefore(LocalTime.parse("04:58")));
+            boolean fiDeServei = (tempsActual.isAfter(LocalTime.parse("02:04")) && tempsActual.isBefore(LocalTime.parse("04:54")));
 
             if (!fiDeServei) {
                 if (hasFGCTrain && !senseParada) {
@@ -298,7 +299,7 @@ public class ManualDisplays {
                     }
 
                     getLayer(0).clear();
-                    getLayer(0).draw(Assets.getMapTexture(imgDir + "ManualDisplay3B.png"), 0, 0);
+                    getLayer(0).draw(Assets.getMapTexture(imgDir + "displaysVariations/ManualDisplay3/ManualDisplay3B.png"), 0, 0);
 
                     if (liniatren.contains("RL1")) { //Spawn a Lleida
                         estacions = new String[]{"Lleida", "Alcoletge", "Térmens", "V Balaguer", "Balaguer"};
@@ -336,7 +337,7 @@ public class ManualDisplays {
                     }
 
                     else if (liniatren.contains("S2")) { //Spawn a Sabadell Estació del Nord
-                        estacions = new String[] {"S Nord", "S Pl. Major", "Can Feu", "UAB", "Volpell.", "St. Cugat", "Sarrià", "Provença", "Pl. Cat."};
+                        estacions = new String[] {"S Nord", "S Pl. Major", "Can Feu", "UAB", "Volpell.", "St. Cugat", "P Funicul.", "Sarrià", "Provença", "Pl. Cat."};
                         if (Objects.equals(liniatren, "S2B")) Collections.reverse(Arrays.asList(estacions));
                     }
 
@@ -361,7 +362,7 @@ public class ManualDisplays {
                     }
 
                     else if (liniatren.contains("S7")) { //Spawn a Rubí
-                        estacions = new String[] {"Rubí", "St. Cugat", "P Funicul.", "Sarrià", "Provença", "Pl. Cat."};
+                        estacions = new String[] {"Rubí", "St. Cugat", "Sarrià", "Provença", "Pl. Cat."};
                         if (Objects.equals(liniatren, "S7B")) Collections.reverse(Arrays.asList(estacions));
                     }
 
@@ -371,17 +372,17 @@ public class ManualDisplays {
                     }
 
                     else if (liniatren.contains("R50")) { //Spawn a Manresa-Baixador
-                        estacions = new String[] {"M Baixador", "M Viladordis", "Monistrol M", "Olesa M", "Martorell", "St. Boi", "Cornellà-R", "Gornal", "Euro.|Fira", "Pl. Esp."};
+                        estacions = new String[] {"M Baixador", "M Viladord.", "Monistrol M", "Olesa M", "Martorell", "St. Boi", "Cornellà-R", "Gornal", "Euro.|Fira", "Pl. Esp."};
                         if (Objects.equals(liniatren, "R50B")) Collections.reverse(Arrays.asList(estacions));
                     }
 
                     else if (liniatren.contains("R53")) { //Spawn a Manresa-Baixador
-                        estacions = new String[] {"M Baixador", "M Viladordis", "C el Vilar", "Monistrol M", "Olesa M", "Martorell"};
+                        estacions = new String[] {"M Baixador", "M Viladord.", "C el Vilar", "Monistrol M", "Olesa M", "Martorell"};
                         if (Objects.equals(liniatren, "R53B")) Collections.reverse(Arrays.asList(estacions));
                     }
 
                     else if (liniatren.contains("R5")) { //Spawn a Manresa-Baixador
-                        estacions = new String[] {"M Baixador", "M Viladordis", "C el Vilar", "Monistrol M", "Olesa M", "Martorell", "Molí Nou", "St. Boi", "Cornellà-R", "Gornal", "Euro.|Fira", "Pl. Esp."};
+                        estacions = new String[] {"M Baixador", "M Viladord.", "C el Vilar", "Monistrol M", "Olesa M", "Martorell", "Molí Nou", "St. Boi", "Cornellà-R", "Gornal", "Euro.|Fira", "Pl. Esp."};
                         if (Objects.equals(liniatren, "R5B")) Collections.reverse(Arrays.asList(estacions));
                     }
 
@@ -408,7 +409,6 @@ public class ManualDisplays {
                         estacions = null;
                     }
 
-                    //COMPROVACIO SI LA LLISTA ES BUIDA SI ES BUIDA DONCS ET FOTS SI NO POS NO XDDDDDDD
                     if (estacions != null) {
                         if (estacions.length > 12 && !multiplePantalla) multiplePantalla = true;
                         getLayer(2).clear();
@@ -430,20 +430,41 @@ public class ManualDisplays {
                     } else {
                         getLayer(0).clear();
                         getLayer(3).clear();
-                        getLayer(0).draw(Assets.getMapTexture(imgDir + "ManualDisplay3D.png"), 0, 0);
+                        getLayer(0).draw(Assets.getMapTexture(imgDir + "displaysVariations/ManualDisplay3/ManualDisplay3D.png"), 0, 0);
                     }
                 }
 
                 else if (senseParada) {
                     getLayer(0).clear();
                     getLayer(3).clear();
-                    getLayer(0).draw(Assets.getMapTexture(imgDir + "ManualDisplay3C.png"), 0, 0);
+                    getLayer(0).draw(Assets.getMapTexture(imgDir + "displaysVariations/ManualDisplay3/ManualDisplay3C.png"), 0, 0);
                 }
 
                 else {
                     getLayer(0).clear();
                     getLayer(3).clear();
-                    getLayer(0).draw(Assets.getMapTexture(imgDir + "ManualDisplay3A.png"), 0, 0);
+                    getLayer(0).draw(Assets.getMapTexture(imgDir + "ManualDisplay3.png"), 0, 0);
+                }
+
+                if (((liniatren.contains("S1") && Objects.equals(codiParada, "TRSN")) ||
+                     (liniatren.contains("S2") && Objects.equals(codiParada, "SBN")) ||
+                     (liniatren.contains("S3") && Objects.equals(codiParada, "SES")) ||
+                     (liniatren.contains("S4") && Objects.equals(codiParada, "ODM")) ||
+                     (liniatren.contains("S5") && Objects.equals(codiParada, "SCF")) ||
+                     (liniatren.contains("S6") && Objects.equals(codiParada, "UAB")) ||
+                     (liniatren.contains("S7") && Objects.equals(codiParada, "RBF")) ||
+                     (liniatren.contains("S8") && Objects.equals(codiParada, "BCNPE")) ||
+                     (liniatren.contains("L6") && Objects.equals(codiParada, "SRA")) ||
+                     (liniatren.contains("L7") && Objects.equals(codiParada, "BCNPC")) ||
+                     (liniatren.contains("L8") && Objects.equals(codiParada, "MNCC")) ||
+                     (liniatren.contains("L12") && Objects.equals(codiParada, "RE")) ||
+                     ((liniatren.contains("RL1") || liniatren.contains("RL2")) && Objects.equals(codiParada, "LLD")) ||
+                     ((liniatren.contains("R53") || liniatren.contains("R50") || liniatren.contains("R5")) && Objects.equals(codiParada, "MRSB")) ||
+                     ((liniatren.contains("R63") || liniatren.contains("R60") || liniatren.contains("R6")) && Objects.equals(codiParada, "IGD"))) && !senseParada) {
+                    getLayer(0).clear();
+                    getLayer(2).clear();
+                    getLayer(3).clear();
+                    getLayer(0).draw(Assets.getMapTexture(imgDir + "displaysVariations/ManualDisplay3/ManualDisplay3F.png"), 0, 0);
                 }
 
             } else {
@@ -452,7 +473,7 @@ public class ManualDisplays {
                 getLayer(2).clear();
                 getLayer(1).clear();
                 getLayer(0).clear();
-                getLayer(0).draw(Assets.getMapTexture(imgDir + "ManualDisplay3E.png"), 0, 0);
+                getLayer(0).draw(Assets.getMapTexture(imgDir + "displaysVariations/ManualDisplay3/ManualDisplay3E.png"), 0, 0);
             }
 
             tickCount++;
@@ -638,13 +659,20 @@ public class ManualDisplays {
                     getLayer(3).draw(minecraftia, 176, 45, MapColorPalette.COLOR_BLACK, "Bitllet T-4 válid");
                 } else if (liniatren.equalsIgnoreCase("RL2")) {
                     getLayer(3).draw(minecraftia, 176, 45, MapColorPalette.COLOR_BLACK, "ATM no válid");
+                } else if (displayID.equalsIgnoreCase("PDF1")) {
+                    getLayer(3).draw(minecraftia, 176, 45, MapColorPalette.COLOR_BLACK, "Ult. vagó no obre");
+                } else if (displayID.equalsIgnoreCase("PDF2")) {
+                    getLayer(3).draw(minecraftia, 176, 45, MapColorPalette.COLOR_BLACK, "Pri. vagó no obre");
+                } else if (displayID.contains("ALG") || displayID.contains("TMN") || displayID.contains("VBLG") || displayID.contains("GRB") || displayID.contains("SRM") || displayID.contains("GTMP") || displayID.contains("PDN") || displayID.contains("TLN") || displayID.contains("SLS")) {
+                    getLayer(3).draw(minecraftia, 176, 45, MapColorPalette.COLOR_BLACK, "Surt en 15 seg.");
                 }
 
                 //////////////////////////////////////////////////////////
             }
 
             if(clearIn != 0){
-                getPlugin().getServer().getScheduler().scheduleSyncDelayedTask(getPlugin(), () -> this.clearInformation(properties.get("ID", String.class)), clearIn * 20L);
+                if (!senseParada) getPlugin().getServer().getScheduler().scheduleSyncDelayedTask(getPlugin(), () -> this.clearInformation(properties.get("ID", String.class)), clearIn * 20L);
+                else getPlugin().getServer().getScheduler().scheduleSyncDelayedTask(getPlugin(), () -> this.clearInformation(properties.get("ID", String.class)), 10 * 20L);
             }
 
             return true;
@@ -660,7 +688,7 @@ public class ManualDisplays {
 
             //wip
             getLayer(0).clear();
-            getLayer(0).draw(Assets.getMapTexture(imgDir + "ManualDisplay3A.png"), 0, 0);
+            getLayer(0).draw(Assets.getMapTexture(imgDir + "ManualDisplay3.png"), 0, 0);
 
             getLayer(2).clear();
             getLayer(3).clear();
@@ -838,8 +866,10 @@ public class ManualDisplays {
             getLayer(1).draw(MapTexture.fromImage(layer1), 0, 5); //global offset because the text is off (idk why)
 
             if(clearIn != 0){
-                getPlugin().getServer().getScheduler().scheduleSyncDelayedTask(getPlugin(), () ->
+                if (!senseParada) getPlugin().getServer().getScheduler().scheduleSyncDelayedTask(getPlugin(), () ->
                         this.clearInformation(properties.get("ID", String.class)), clearIn * 20L);
+                else getPlugin().getServer().getScheduler().scheduleSyncDelayedTask(getPlugin(), () ->
+                        this.clearInformation(properties.get("ID", String.class)), 10 * 20L);
             }
 
             return true;
@@ -903,8 +933,12 @@ public class ManualDisplays {
             getLayer(1).draw(MapTexture.fromImage(layer1),0 , 0);
 
             if(clearIn != 0){
-                getPlugin().getServer().getScheduler().scheduleSyncDelayedTask(getPlugin(), () ->
-                        this.clearInformation(properties.get("ID", String.class)), clearIn * 20L);
+                if (!senseParada)
+                    getPlugin().getServer().getScheduler().scheduleSyncDelayedTask(getPlugin(), () ->
+                            this.clearInformation(properties.get("ID", String.class)), clearIn * 20L);
+                else
+                    getPlugin().getServer().getScheduler().scheduleSyncDelayedTask(getPlugin(), () ->
+                            this.clearInformation(properties.get("ID", String.class)), 10 * 20L);
             }
             return true;
         }
@@ -1160,6 +1194,8 @@ public class ManualDisplays {
     public static class ManualDisplay7 extends ManualDisplay{
         static final Font helvetica19 = TrensMinecat.helvetica46JavaFont.deriveFont(Font.BOLD, 19);
         static final Font helvetica12 = TrensMinecat.helvetica46JavaFont.deriveFont(Font.BOLD, 12);
+        String observacions = "";
+
         @Override
         public void onAttached() {
             getLayer(1).draw(Assets.getMapTexture(imgDir + "ManualDisplay7.png"), 0, 0);
@@ -1182,7 +1218,8 @@ public class ManualDisplays {
             g.setColor(new Color(255, 0, 0));
             g.drawString(dadesTren.getProperties().getDestination().toUpperCase(), 4, 13);
             g.drawString(dadesTren.getProperties().getDisplayName().toUpperCase(), 4, 28);
-            g.drawString("", 4, 34); //observacions (no en tenim)
+            //if (dadesTren.getProperties().matchTag("R1") || dadesTren.getProperties().matchTag("R2A") || dadesTren.getProperties().matchTag("R2N") || )
+            g.drawString(observacions, 4, 34); //observacions (no en tenim)
             g.dispose();
             getLayer(2).draw(MapTexture.fromImage(departure),13 , 55);
 
@@ -1380,8 +1417,12 @@ public class ManualDisplays {
             getLayer(1).draw(MapTexture.fromImage(layer1), 0, 5); //global offset because the text is off (idk why)
 
             if(clearIn != 0){
+                if (!senseParada)
                 getPlugin().getServer().getScheduler().scheduleSyncDelayedTask(getPlugin(), () ->
                         this.clearInformation(properties.get("ID", String.class)), clearIn * 20L);
+                else
+                    getPlugin().getServer().getScheduler().scheduleSyncDelayedTask(getPlugin(), () ->
+                            this.clearInformation(properties.get("ID", String.class)), 10 * 20L);
             }
 
             return true;
@@ -1581,8 +1622,12 @@ public class ManualDisplays {
             getLayer(1).draw(MapTexture.fromImage(layer1), 0, 5); //global offset because the text is off (idk why)
 
             if(clearIn != 0){
-                getPlugin().getServer().getScheduler().scheduleSyncDelayedTask(getPlugin(), () ->
-                        this.clearInformation(properties.get("ID", String.class)), clearIn * 20L);
+                if (!senseParada)
+                    getPlugin().getServer().getScheduler().scheduleSyncDelayedTask(getPlugin(), () ->
+                            this.clearInformation(properties.get("ID", String.class)), clearIn * 20L);
+                else
+                    getPlugin().getServer().getScheduler().scheduleSyncDelayedTask(getPlugin(), () ->
+                            this.clearInformation(properties.get("ID", String.class)), 10 * 20L);
             }
 
             return true;
@@ -1612,25 +1657,125 @@ public class ManualDisplays {
         }
     }
 
-    public static class ManualDisplay9 extends ManualDisplay{
+    public static class ManualDisplay9A extends ManualDisplay{
+        static MapTexture background = MapTexture.loadPluginResource(JavaPlugin.getPlugin(TrensMinecat.class), "img/ManualDisplay9A.png");
+        String dtype = "unhidden";
+        ArrayList<String> hiddenLines = new ArrayList<String>();
 
-        @Override
-        public void onAttached(){
-            super.onAttached();
-        }
         @Override
         public boolean updateInformation(String displayID, String via, MinecartGroup dadesTren, Integer clearIn) {
-            return false;
+            if(! properties.get("ID", String.class).equals(displayID)) return false;
+            dtype = properties.get("ocultar", String.class, "unhidden"); //si no s'ha especificat quina linia ocultar, retorna unhidden.
+            getLayer(1).clear();
+            BufferedImage layer1 = new BufferedImage(256, 128, BufferedImage.TYPE_INT_ARGB);
+            getLayer(1).draw(MapTexture.fromImage(layer1),0 , 0);
+
+            if (dadesTren.getProperties().matchTag("FGC") && dadesTren.getProperties().matchTag("L8")){
+                getLayer(2).draw(Assets.getMapTexture(imgDir + "displaysVariations/Displays9And10/led.png"), 9, 10);
+            } else if (dadesTren.getProperties().matchTag("FGC") && dadesTren.getProperties().matchTag("S3")){
+                getLayer(2).draw(Assets.getMapTexture(imgDir + "displaysVariations/Displays9And10/led.png"), 9, 26);
+            } else if (dadesTren.getProperties().matchTag("FGC") && dadesTren.getProperties().matchTag("S4")){
+                getLayer(2).draw(Assets.getMapTexture(imgDir + "displaysVariations/Displays9And10/led.png"), 9, 42);
+            } else if (dadesTren.getProperties().matchTag("FGC") && dadesTren.getProperties().matchTag("S8")){
+                getLayer(2).draw(Assets.getMapTexture(imgDir + "displaysVariations/Displays9And10/led.png"), 9, 58);
+            } else if (dadesTren.getProperties().matchTag("FGC") && dadesTren.getProperties().matchTag("R5") && !dadesTren.getProperties().matchTag("R53")){
+                getLayer(2).draw(Assets.getMapTexture(imgDir + "displaysVariations/Displays9And10/led.png"), 116, 10);
+            } else if (dadesTren.getProperties().matchTag("FGC") && dadesTren.getProperties().matchTag("R6") && !dadesTren.getProperties().matchTag("R63")){
+                getLayer(2).draw(Assets.getMapTexture(imgDir + "displaysVariations/Displays9And10/led.png"), 116, 26);
+            } else if (dadesTren.getProperties().matchTag("FGC") && dadesTren.getProperties().matchTag("R5") && dadesTren.getProperties().matchTag("R53")){
+                getLayer(2).draw(Assets.getMapTexture(imgDir + "displaysVariations/Displays9And10/led.png"), 116, 10);
+                if (dadesTren.getProperties().getDestination().equalsIgnoreCase("Martorell")) {
+                    getLayer(2).draw(Assets.getMapTexture(imgDir + "displaysVariations/Displays9And10/led.png"), 89, 77);
+                }
+            } else if (dadesTren.getProperties().matchTag("FGC") && dadesTren.getProperties().matchTag("R6") && dadesTren.getProperties().matchTag("R63")){
+                getLayer(2).draw(Assets.getMapTexture(imgDir + "displaysVariations/Displays9And10/led.png"), 116, 26);
+                if (dadesTren.getProperties().getDestination().equalsIgnoreCase("Martorell")) {
+                    getLayer(2).draw(Assets.getMapTexture(imgDir + "displaysVariations/Displays9And10/led.png"), 89, 77);
+                }
+            } else if (dadesTren.getProperties().matchTag("FGC") && dadesTren.getProperties().matchTag("-RES-")){
+                getLayer(2).draw(Assets.getMapTexture(imgDir + "displaysVariations/Displays9And10/led.png"), 116, 58);
+            }
+
+            if (!dadesTren.getProperties().matchTag("R50") || !dadesTren.getProperties().matchTag("R53") || !dadesTren.getProperties().matchTag("R60") || !dadesTren.getProperties().matchTag("R63") || !dadesTren.getProperties().matchTag("-RES-")){
+                getLayer(2).draw(Assets.getMapTexture(imgDir + "displaysVariations/Displays9And10/led.png"), 9, 77);
+            }
+
+            if (dadesTren.getProperties().matchTag("R50") || dadesTren.getProperties().matchTag("R60")){
+                getLayer(2).draw(Assets.getMapTexture(imgDir + "displaysVariations/Displays9And10/led.png"), 153, 77);
+            }
+
+            if(clearIn != 0){
+                getPlugin().getServer().getScheduler().scheduleSyncDelayedTask(getPlugin(), () -> this.clearInformation(properties.get("ID", String.class)), 10 * 20L);
+            }
+            return true;
         }
 
         @Override
-        public void onTick(){
+        public void onTick() {
             super.onTick();
+            if (dtype.equalsIgnoreCase("L8")){
+                if (!hiddenLines.contains("L8")) {
+                    hiddenLines.add("L8");
+                    getLayer(4).draw(Assets.getMapTexture(imgDir + "displaysVariations/Displays9And10/empty.png"), 7, 7);
+                }
+            }
+            if (dtype.equalsIgnoreCase("S3")){
+                if (!hiddenLines.contains("S3")) {
+                    hiddenLines.add("S3");
+                    getLayer(5).draw(Assets.getMapTexture(imgDir + "displaysVariations/Displays9And10/empty.png"), 7, 23);
+                }
+            }
+            if (dtype.equalsIgnoreCase("S4")){
+                if (!hiddenLines.contains("S4")) {
+                    hiddenLines.add("S4");
+                    getLayer(6).draw(Assets.getMapTexture(imgDir + "displaysVariations/Displays9And10/empty.png"), 7, 39);
+                }
+            }
+            if (dtype.equalsIgnoreCase("S8")){
+                if (!hiddenLines.contains("S8")) {
+                    hiddenLines.add("S8");
+                    getLayer(7).draw(Assets.getMapTexture(imgDir + "displaysVariations/Displays9And10/empty.png"), 7, 55);
+                }
+            }
+            if (dtype.equalsIgnoreCase("R5")){
+                if (!hiddenLines.contains("R5")) {
+                    hiddenLines.add("R5");
+                    getLayer(8).draw(Assets.getMapTexture(imgDir + "displaysVariations/Displays9And10/empty.png"), 114, 7);
+                }
+            }
+            if (dtype.equalsIgnoreCase("R6")){
+                if (!hiddenLines.contains("R6")){
+                    hiddenLines.add("R6");
+                    getLayer(9).draw(Assets.getMapTexture(imgDir + "displaysVariations/Displays9And10/empty.png"), 114, 23);
+                }
+            }
+            if (dtype.equalsIgnoreCase("unhidden")){
+                getLayer(4).clear();
+                getLayer(5).clear();
+                getLayer(6).clear();
+                getLayer(7).clear();
+                getLayer(8).clear();
+                getLayer(9).clear();
+                hiddenLines.clear();
+            }
         }
 
         @Override
         public boolean clearInformation(String displayID) {
-            return false;
+            if(! properties.get("ID", String.class).equals(displayID)) return false;
+            getLayer(1).clear();
+            getLayer(2).clear();
+            getLayer(3).clear();
+            return true;
         }
+
+        @Override
+        public void onAttached() {
+            super.onAttached();
+            getLayer(0).clear();
+            getLayer(0).draw(background, 0, 0);
+        }
+
     }
+
 }
