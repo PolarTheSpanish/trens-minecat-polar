@@ -112,6 +112,8 @@ public class TrensMinecat extends JavaPlugin {
         SignAction.register(new SignActionChime());
         SignAction.register(new SignActionAudio(), true);
         SignAction.register(new SignActionUpdateService());
+        SignAction.register(new SignActionRailCrossing());
+        SignAction.register(new SignActionAttEditor());
         SignAction.register(new SignActionAnnouncement());
 
 
@@ -615,6 +617,8 @@ public class TrensMinecat extends JavaPlugin {
         SignAction.unregister(new SignActionChime());
         SignAction.unregister(new SignActionAudio());
         SignAction.unregister(new SignActionAnnouncement());
+        SignAction.unregister(new SignActionRailCrossing());
+        SignAction.unregister(new SignActionAttEditor());
         SignAction.unregister(new SignActionUpdateService());
     }
 

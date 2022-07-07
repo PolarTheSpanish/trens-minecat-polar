@@ -29,19 +29,19 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.17.1-R0.1-SNAPSHOT</version>
+            <version>1.19-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.bergerkiller.bukkit</groupId>
             <artifactId>TrainCarts</artifactId>
-            <version>1.17.1-v2-SNAPSHOT</version>
+            <version>1.19-v3-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.bergerkiller.bukkit</groupId>
             <artifactId>BKCommonLib</artifactId>
-            <version>1.17.1-v5-SNAPSHOT</version>
+            <version>1.19-v1</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -62,7 +62,6 @@
             <version>4.6.3</version>
             <scope>compile</scope>
         </dependency>
-
     </dependencies>
 
     <build>
