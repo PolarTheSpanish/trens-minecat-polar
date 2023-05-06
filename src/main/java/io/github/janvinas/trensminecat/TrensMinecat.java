@@ -238,6 +238,11 @@ public class TrensMinecat extends JavaPlugin {
                             ItemUtil.getMetaTag(display).putValue("ID", args[3]);
                             ((Player) sender).getInventory().addItem(display);
                             return true;
+                        } else if (args[2].equalsIgnoreCase("9B")) {
+                            ItemStack display = MapDisplay.createMapItem(ManualDisplays.ManualDisplay9B.class);
+                            ItemUtil.getMetaTag(display).putValue("ID", args[3]);
+                            ((Player) sender).getInventory().addItem(display);
+                            return true;
                         } else if (args[2].equalsIgnoreCase("10")) {
                             sender.sendMessage(ChatColor.AQUA + "Aquest display conté uns quants subtipus\n" +
                                     "Si us plau, especifiqui el tipus:\n" +
