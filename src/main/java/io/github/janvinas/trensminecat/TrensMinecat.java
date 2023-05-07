@@ -250,6 +250,16 @@ public class TrensMinecat extends JavaPlugin {
                                     "10A: Display dret\n" +
                                     "10B: Display esquerra");
                             return true;
+                        } else if (args[2].equalsIgnoreCase("10A")) {
+                            ItemStack display = MapDisplay.createMapItem(ManualDisplays.ManualDisplay10A.class);
+                            ItemUtil.getMetaTag(display).putValue("ID", args[3]);
+                            ((Player) sender).getInventory().addItem(display);
+                            return true;
+                        } else if (args[2].equalsIgnoreCase("10B")) {
+                            ItemStack display = MapDisplay.createMapItem(ManualDisplays.ManualDisplay10B.class);
+                            ItemUtil.getMetaTag(display).putValue("ID", args[3]);
+                            ((Player) sender).getInventory().addItem(display);
+                            return true;
                         }
                     } else sender.sendMessage(ChatColor.RED + "Aquesta comanda només pot ser executat per un usuari i no per consola");
                 }
