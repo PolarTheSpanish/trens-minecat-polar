@@ -1114,6 +1114,15 @@ public class ManualDisplays {
                             animationLength = 0;
                         }
                     }
+                    if (trainDataName.toLowerCase().contains("r3_serveia") && trainDataDest.equalsIgnoreCase("Granollers-Canovelles") && animationLength > 0 && animationLength < 602) {
+                        if (animationLength != 601) {
+                            getLayer(2).draw(Assets.getMapTexture(imgDir + "46px_animated/Rodalies/R3/Barcelona-EstacióDeFrança/fotograma" + animationLength + ".png"), 13, 41);
+                            animationLength++;
+                        }
+                        else {
+                            animationLength = 0;
+                        }
+                    }
                 } catch (MapTexture.TextureLoadException e){
                     Bukkit.getServer().getConsoleSender().sendMessage("Oops! Errada al carregar animació pel tren [\" + trainDataName + \" amb destinació \" + trainDataDest + \"] (pot ser d'un tren que no tingui cap animació codificada?");
                 }
